@@ -1,0 +1,28 @@
+body {
+  display:grid;
+  justify-items:center;
+  grid-template-areas:
+    "header header"
+    "nav nav";
+  grid-template-rows:auto;
+  grid-template-columns:1fr 1fr;
+}
+header {
+  justify-items:center;
+  grid-area:header;
+}
+nav {
+  justify-items:center;
+  grid-area:nav;
+}
+footer {
+  justify-items:center;
+}
+.social-icons {
+  height:50px;
+  width:50px;
+}
+.social-icon-buttons {
+  border:none;
+  background:transparent;
+}
