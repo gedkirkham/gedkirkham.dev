@@ -1,28 +1,29 @@
 body {
-  display:grid;
-  justify-items:center;
-  grid-template-areas:
-    "header header"
-    "nav nav";
-  grid-template-rows:auto;
-  grid-template-columns:1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 100px 1fr 1fr 1fr;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
 header {
-  justify-items:center;
-  grid-area:header;
+  grid-column: 2 / span 2;
 }
+
 nav {
-  justify-items:center;
-  grid-area:nav;
+  grid-column: 2 / span 2;
 }
+
 footer {
-  justify-items:center;
+  justify-items: start;
+  grid-area: footer;
 }
+
 .social-icons {
-  height:50px;
-  width:50px;
+  height: 40px;
+  width: 40px;
 }
+
 .social-icon-buttons {
-  border:none;
-  background:transparent;
+  border: none;
+  background: transparent;
 }
