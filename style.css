@@ -59,6 +59,13 @@ p {
 section header h1 {
   color: #a658b3;
   font-weight: normal;
+  font-size: 2em;
+}
+
+section header h5 {
+  color: #a658b3;
+  font-weight: normal;
+  text-align: right
 }
 
 section h3 {
@@ -136,4 +143,8 @@ a:hover {
 
 code {
   text-justify: none;
+}
+
+#article-footer {
+  margin-top: 50px;
 }

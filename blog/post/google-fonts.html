@@ -19,18 +19,22 @@
 
 <body>
   <header id="grid-header">
-    <div id="header-purple-container">
+    <a
+      id="header-purple-container"
+      href="/"
+    >
       <h1>Ged Kirkham</h1>
-    </div>
+    </a>
 
     <div id="header-grey-container"></div>
   </header>
 
   <main id="grid-main">
     <section class="light-yellow">
-      <div class="contents-wrapper">
+      <article class="contents-wrapper">
         <header>
           <h1 class="text-align-right">How to use Google fonts</h1>
+          <h5>Published 2019/09/29</h5>
         </header>
 
         <h3>Introduction</h3>
@@ -82,7 +86,10 @@
             &lt;link>
           </code> header is the preferred method as this allows the server to point an interested client to another
           resource without actually
-          touching the resource in question. <a href="https://www.w3.org/wiki/LinkHeader">href="" defines the link to
+          touching the resource in question. <a
+            href="https://www.w3.org/wiki/LinkHeader"
+            target="_blank"
+          >href="" defines the link to
             the resource,
             and rel=""
             defines the relation type</a>.</p>
@@ -152,8 +159,13 @@
           websites there is a good chance that a user will have visited a website that has used my specified font in the
           past. Will this said user be able to use a cached version of that font? As website cached files are now
           separated per website in modern browsers, would this even be possible?</p>
+
+        <footer id="article-footer">If you would like to make any amendments, please create a pull request via my <a
+            href="https://github.com/gedkirkham/gedkirkham.github.io/blob/master/blog/post/google-fonts.html"
+            target="_blank"
+          >GitHub account</a>.</footer>
     </section>
-    </div>
+    </article>
   </main>
 
   <footer>
