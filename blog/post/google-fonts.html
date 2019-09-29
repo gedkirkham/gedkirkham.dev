@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1"
+>
+<meta
+  name="Description"
+  content="Ged Kirkham is a full-stack developer from London, UK."
+>
+
+<link
+  href="../../style.css"
+  rel="stylesheet"
+>
+
+<title>Ged Kirkham - How to use Google fonts</title>
+
+<body>
+  <header id="grid-header">
+    <div id="header-purple-container">
+      <h1>Ged Kirkham</h1>
+    </div>
+
+    <div id="header-grey-container"></div>
+  </header>
+
+  <main id="grid-main">
+    <section class="light-yellow">
+      <div class="contents-wrapper">
+        <header>
+          <h1 class="text-align-right">How to use Google fonts</h1>
+        </header>
+
+        <h3>Introduction</h3>
+        <p>
+          Fonts are considered a
+          <a
+            href="https://developers.google.com/web/tools/lighthouse/audits/blocking-resources?utm_source=lighthouse&utm_medium=devtools"
+            target="_blank"
+          >render-blocking resource</a> and can cause substantial time increases in a page's load time
+          dependent
+          on its configuration. By choosing Google to host your fonts, it helps to remove some of the headaches that
+          can come along with configuration and thus, has understandably become common for developers to reach
+          for during development. Many people do not understand exactly what is happening in the background, and in
+          this
+          blog post I intend to provide a high-level overview.
+        </p>
+
+        <h3>Google fonts API</h3>
+        <p>
+          When you want to use the Google API, you will be provided with code similar to the following:
+
+          <br><br>
+          <code>
+            &lt;link
+            href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap"
+            rel="stylesheet"
+            />
+          </code>
+          <br><br>
+
+          or
+
+          <br>
+          <br>
+          <code>
+            &lt;style>
+            @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+            &lt;/style>
+          </code>
+          <br>
+          <br>
+
+          Be aware that the above does not contain a direct URL to the font file, but is in-fact a link to a customised,
+          browser
+          specific stylesheet.</p>
+
+        <p>There are two ways to import Google fonts, of which a
+          <code>
+            &lt;link>
+          </code> header is the preferred method as this allows the server to point an interested client to another
+          resource without actually
+          touching the resource in question. <a href="https://www.w3.org/wiki/LinkHeader">href="" defines the link to
+            the resource,
+            and rel=""
+            defines the relation type</a>.</p>
+
+        <p>The <code>@import</code> method should be avoided as it blocks parallel downloads.</p>
+
+        <h3>How is the stylesheet dynamic?</h3>
+        <p>Google first detects the users browser and then delivers a custom stylesheet that determines the font format
+          to be downloaded. For example, WOFF2 is not supported on IE11 while EOT is, and in this instance, the user
+          would be provided a stylesheet that would inform them to download the EOT file format over WOFF.</p>
+
+        <img
+          src="../img/google-fonts-stylesheet.jpg"
+          alt="Google fonts API dynamic stylesheet"
+          style="width:100%"
+        >
+
+        <h3>Where?</h3>
+        <p>Place the <code>&lt;link></code> element at the top of the .html page. The reason for doing this is that
+          browsers
+          parse HTML
+          line
+          by line and we want to ensure that the browser is aware of the Google fonts resource, and begins to download
+          the stylesheet as soon as possible.</p>
+
+        <h3>Now what happens?</h3>
+        <p>Once the stylesheet has been downloaded, nothing will happen until the browser has also downloaded a piece of
+          CSS code - <code>font-family: &lt;font-name> </code> - that indicates the font is to be used used,
+          and thus
+          needs to be
+          retrieved. This piece of CSS code can be within style.css or in-line. Once confirmed, the browser will then
+          first search for the font locally, and then reach out to the specified URL that was indicated in the
+          downloaded stylesheet. The next steps are dependent on the value set for the <code>font-display</code>
+          property, but in short, the
+          CSSOM tree will be
+          re-rendered to display the text with the specified font.</p>
+
+        <img
+          src="../img/google-font-relStylesheet.jpg"
+          alt="Network of Google API downloading stylsheet and font"
+          style="width:100%"
+        >
+
+        <h3>A faster way?</h3>
+        <p>Although there are benefits in having Google dynamically create custom stylesheets per user, this
+          does increase the length of time that the user can download and render the font. This is
+          because by dynamically creating a custom stylsheet, the user first has to complete a DNS lookup for the URL
+          specified in the <code>&lt;link></code> tag, and then complete a HTTP request to download the file. Both of
+          these steps increase the time to render the font.</p>
+
+        <p>One solution is to host the font on your own server. By doing so myself, I managed to save
+          a DNS lookup and HTTP request to download the Google specific stylesheet that would have taken ~1 second to
+          complete.
+          Instead, I served the .WOFF2 font file on my own server, and added the required <code>@font-face</code> CSS
+          parameters to
+          style.css.</p>
+
+        <img
+          src="../img/hosted-fonts.jpg"
+          alt="Self-hosted network results"
+          style="width:100%"
+        >
+
+        <p>Hosting your own fonts appears to be the better approach for new users visiting your website, but I am
+          curious
+          if this has real world positive implications. As Google fonts are used by many
+          websites there is a good chance that a user will have visited a website that has used my specified font in the
+          past. Will this said user be able to use a cached version of that font? As website cached files are now
+          separated per website in modern browsers, would this even be possible?</p>
+    </section>
+    </div>
+  </main>
+
+  <footer>
+    <header>
+      <h1 class="purple-text">Contact me</h1>
+    </header>
+    <a
+      id="contact-email"
+      class="grey-text"
+      href="mailto:gedkirkham@protonmail.com"
+    >gedkirkham@protonmail.com</a>
+    <nav id="social-icon-buttons">
+      <button
+        aria-label="Instagram profile link"
+        class="social-icon-buttons"
+        onclick="location.href = 'https://instagram.com/gedkirkham'"
+      >
+        <img
+          alt="Instagram logo"
+          class="social-icons"
+          src="../../img/instagram.svg"
+        >
+      </button>
+      <button
+        aria-label="Twitter profile link"
+        class="social-icon-buttons"
+        onclick="location.href = 'https://twitter.com/gedkirkham'"
+      >
+        <img
+          src="../../img/twitter.svg"
+          class="social-icons"
+          alt="Twitter logo"
+        >
+      </button>
+    </nav>
+  </footer>
+</body>
+
+</html>

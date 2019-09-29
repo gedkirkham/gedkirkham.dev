@@ -4,6 +4,7 @@
     url('./fonts/josefinsans-regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: fallback;
 }
 
 body {
@@ -58,6 +59,12 @@ p {
 section header h1 {
   color: #a658b3;
   font-weight: normal;
+}
+
+section h3 {
+  color: #a658b3;
+  font-weight: normal;
+  margin-top: 45px;
 }
 
 .purple-text {
@@ -116,4 +123,17 @@ footer header h1 {
 
 #contact-email:hover {
   text-decoration: underline;
+}
+
+a {
+  text-decoration: none;
+  color: #a658b3
+}
+
+a:hover {
+  text-decoration: underline
+}
+
+code {
+  text-justify: none;
 }
