@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1"
+>
+<meta
+  name="Description"
+  content="Ged Kirkham is a full-stack developer from London, UK."
+>
+
+<link
+  href="../../style.css"
+  rel="stylesheet"
+>
+
+<title>Ged Kirkham - How to create a refresh button animation</title>
+
+<body>
+  <header id="grid-header">
+    <a
+      id="header-purple-container"
+      href="/"
+    >
+      <h1>Ged Kirkham</h1>
+    </a>
+
+    <div id="header-grey-container"></div>
+  </header>
+
+  <main id="grid-main">
+    <section class="light-yellow">
+      <article class="contents-wrapper">
+        <header>
+          <h1 class="text-align-right">Creating a refresh button with Javascript and CSS animation</h1>
+          <h5>Published 2019/11/19</h5>
+        </header>
+
+        <h3>Introduction</h3>
+        <p>I want to provide a visual cue to the user once they have clicked a button
+          to
+          give
+          confidence that a process is currently in progress due to their action.
+          I want to do this without large
+          text based notifications, and wanted it to look slick. At the time, the only thing that I found was an
+          animation that appeared inside the button, and then slowly faded away once the action was
+          complete. To me, this looked cheap, so I went about making my own.
+        </p>
+
+        <h3>Animation and Keyframes</h3>
+        <p>
+          To use CSS animation, you must first specify a keyframe.
+          Keyframes hold the style(s) the element will have at specified times, and we can determine this with the
+          <code>from</code> and <code>to</code> parameters.
+          When you specify CSS styles inside the <code>@keyframes</code> rule, the animation will gradually change from
+          the current, to the new style.
+        </p>
+
+        <h3>Setup</h3>
+        <p>
+          You must first bind the animation to an element.
+          To do this, simply provide the <code>@keyframe</code> with a title, and then assign that title to the
+          element's class/id via <code>animation-name</code> property.
+          I did this by assigning a <code>@keyframe</code> to the <code>.refresh-start</code> class.
+        </p>
+
+        <p>
+          <code>
+            <p class="indent-1"><code>@keyframes <i>rotate</i> {</code></p>
+            <p class="indent-2"><code>
+                from {transform: rotate(0deg)}<br>
+                to {transform: rotate(360deg)}</code></p>
+            <p class="indent-1"><code>}</code></p><br>
+
+            <p class="indent-1"><code>.refresh-start {</code></p>
+            <p class="indent-2">
+              <code>
+                <i>animation-name: rotate;</i> <br>
+                animation-duration: 1s; <br>
+                animation-iteration-count: infinite; <br>
+                animation-timing-function: linear; <br>
+                animation-play-state: running;<br>
+              </code>
+              <p class="indent-1">
+                <code>}</code></p>
+          </code>
+        </p>
+
+        <p>When the above two CSS properties are applied to the below code, we get the following effect.</p>
+
+        <p>
+          <code>
+            &lt;button>Refresh &lt;img class="refresh-start" src="../img/refresh-icon.svg" height="12" />&lt;/button>
+          </code>
+        </p>
+
+        <button>Refresh <img
+            class="refresh-start"
+            src="../img/refresh-icon.svg"
+            height="12"
+          /></button><br><br>
+
+        <p>
+          From the above code, you should be able to see that there is a <code>keyframe</code> titled
+          <code>rotate</code> assigned to the <code>.refresh-start</code> class.
+          The <code>from keyframe</code> property employs the <code>transform</code> property that enables us to
+          determine a starting point for our SVG icon - <code>0deg</code>.
+          The <code>to keyframe</code> property also employs the <code>transform</code> property and determines that the
+          element will end at <code>360deg</code> - one full rotation.
+        </p>
+
+        <h3>Starting the animation</h3>
+        <p>
+          The current animation looks good, but I only want it to animate once the user has clicked the button.
+          To achieve this effect, I will need to dynamically manipulate the DOM.
+        </p>
+
+        <p>
+          Firstly, add an <code>onclick</code> event to the <code>&lt;button></code> that triggers a function -
+          <code>refreshContent()</code>.
+          Add an <code>id</code> titled <code>refresh-button</code> to the <code>&lt;button></code>, and an
+          <code>id</code> titled <code>refresh-icon</code> to the <code>&lt;img></code>.
+        </p>
+
+        <p>
+          <code>
+            &lt;button id="refresh-button" class="refresh-end" onclick="refreshContent()">Refresh &lt;img
+            id="refresh-icon" class="refresh-start"
+            src="../img/refresh-icon.svg" height="12" />&lt;/button>
+          </code>
+        </p>
+
+        <p>
+          Once the user clicks the button, <code>refreshContent()</code> will be executed.
+          This function will immediately remove the <code>&lt;img> class</code> attribute titled
+          <code>refresh-end</code> which has a css property of the following; <code>animation-play-state: paused
+            !important</code>. By removing this property, <code>.refresh-start class</code> takes priority with an
+          <code>animation-play-state</code> of <code>running</code> which triggers the animation.
+        </p>
+
+        <p>
+          <code>
+            <p class="indent-1">function refreshContent() {</p>
+            <p class="indent-2">
+              <code>
+                let refreshIcon = document.getElementById("refresh-icon") <br>
+                let refreshButton = document.getElementById("refresh-button") <br>
+                refreshButton.removeAttribute("class") <br>
+                refreshButton.disabled = true <br>
+              </code>
+            </p>
+
+            <p class="indent-2"><code>setTimeout(function () {</code></p>
+            <p class="indent-3">
+              <code>refreshIcon.addEventListener("animationiteration", function () {
+                refreshButton.setAttribute("class", "refresh-end")
+                refreshButton.disabled = false
+                refreshIcon.removeEventListener("animationiteration")
+                });</code>
+            </p>
+            <p class="indent-2"><code>}, 100)</code></p>
+            <p class="indent-1"><code>}</code></p>
+          </code>
+        </p>
+
+        <h3>Stopping the animation</h3>
+        <p>
+          The icon within the button is now rotating but I do want this to stop at some point.
+          Ideally I want the button to stop once a task has been completed, and to simulate this I can use
+          <code>setTimeout()</code>.
+        </p>
+
+        <p>
+          Within the <code>setTimeout()</code> function, I need to add an <code>"animationiteration"</code> event
+          listener
+          to the refreshButton element. <code>"animationiteration"</code> is an animation iteration event that occurs
+          when a css animation is repeated. Once the animation has repeated, the anonymous function is called which
+          sets the <code>class "refresh-end"</code>. As discussed previously, this now pauses the animation. I also
+          remove the disabled attribute from the button to allow the user to click again, if they so wish.
+        </p>
+
+        <button
+          id="refresh-button"
+          class="refresh-end"
+          onclick="refreshContent()"
+        >Refresh <img
+            id="refresh-icon"
+            class="refresh-start"
+            src="../img/refresh-icon.svg"
+            height="12"
+          /></button>
+
+        <script>
+          function refreshContent() {
+            let refreshIcon = document.getElementById("refresh-icon")
+            let refreshButton = document.getElementById("refresh-button")
+            refreshButton.removeAttribute("class");
+            refreshButton.disabled = true
+
+            setTimeout(function () {
+
+              refreshIcon.addEventListener("animationiteration", function () {
+                refreshButton.setAttribute("class", "refresh-end")
+                refreshButton.disabled = false
+                refreshIcon.removeEventListener("animationiteration")
+              });
+            }, 100)
+          }
+        </script>
+
+        <style>
+          .refresh-start {
+            animation-name: rotate;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            animation-play-state: inherit;
+          }
+
+          .refresh-end {
+            animation-play-state: paused !important;
+          }
+
+          #refresh-button {
+            animation-play-state: running;
+          }
+
+          @keyframes rotate {
+            from {
+              transform: rotate(0deg)
+            }
+
+            to {
+              transform: rotate(359deg)
+            }
+          }
+        </style>
+
+        <section>
+          <h3>Acknowledgements</h3>
+          <div>Icons made by <a
+              href="https://www.flaticon.com/authors/freepik"
+              title="Freepik"
+            >Freepik</a> from <a
+              href="https://www.flaticon.com/"
+              title="Flaticon"
+            >www.flaticon.com</a></div>
+        </section>
+        <footer id="article-footer">If you would like to make any amendments, please create a pull request via my <a
+            href="https://github.com/gedkirkham/gedkirkham.github.io/blob/master/blog/post/google-fonts.html"
+            target="_blank"
+          >GitHub account</a>.</footer>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <header>
+      <h1 class="purple-text">Contact me</h1>
+    </header>
+    <a
+      id="contact-email"
+      class="grey-text"
+      href="mailto:gedkirkham@protonmail.com"
+    >gedkirkham@protonmail.com</a>
+    <nav id="social-icon-buttons">
+      <button
+        aria-label="Instagram profile link"
+        class="social-icon-buttons"
+        onclick="location.href = 'https://instagram.com/gedkirkham'"
+      >
+        <img
+          alt="Instagram logo"
+          class="social-icons"
+          src="../../img/instagram.svg"
+        >
+      </button>
+      <button
+        aria-label="Twitter profile link"
+        class="social-icon-buttons"
+        onclick="location.href = 'https://twitter.com/gedkirkham'"
+      >
+        <img
+          src="../../img/twitter.svg"
+          class="social-icons"
+          alt="Twitter logo"
+        >
+      </button>
+    </nav>
+  </footer>
+</body>
+
+</html>

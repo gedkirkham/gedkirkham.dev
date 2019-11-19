@@ -143,8 +143,24 @@ a:hover {
 
 code {
   text-justify: none;
+  background: white;
 }
 
 #article-footer {
   margin-top: 50px;
+}
+
+.indent-1 {
+  margin: 0 0 0 20px;
+  padding: 0
+}
+
+.indent-2 {
+  margin: 0 0 0 40px;
+  padding: 0;
+}
+
+.indent-3 {
+  margin: 0 0 0 60px;
+  padding: 0;
 }
