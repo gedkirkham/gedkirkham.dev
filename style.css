@@ -44,7 +44,36 @@ body {
   color: #292929;
   font-size: 0.85em;
   font-weight: 300;
-  background-color: #fafafa
+  background-color: #fafafa;
+}
+
+#ribbon-wrapper {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+}
+
+@media(min-width: 801px) {
+  #ribbon {
+    width: 200vw;
+    height: 100vh;
+    background-color: #2CDF89;
+    position: absolute;
+    z-index: -1;
+    transform: translateY(-50vh) translateX(-80vw) rotate(-40deg)
+  }
+}
+
+@media(max-width: 800px) {
+  #ribbon {
+    width: 130vw;
+    height: 100vh;
+    background-color: #2CDF89;
+    position: absolute;
+    z-index: -1;
+    transform: translateY(-40vh) translateX(-60vw) rotate(50deg);
+  }
 }
 
 h1,
