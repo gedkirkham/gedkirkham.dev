@@ -185,7 +185,7 @@ a:hover {
 code {
   text-justify: none;
   color: #DF442C;
-  overflow-wrap: anywhere;
+  word-break: break-all;
 }
 
 #article-footer {
