@@ -52,11 +52,9 @@ body {
   }
 }
 
-@media (prefers-color-scheme: light) {
-  body {
-    background-color: #fafafa;
-    color: #292929
-  }
+body {
+  background-color: #fafafa;
+  color: #292929
 }
 
 #ribbon-wrapper {
@@ -86,10 +84,8 @@ body {
   }
 }
 
-@media (prefers-color-scheme: light) {
-  #ribbon {
-    background-color: #2CDF89;
-  }
+#ribbon {
+  background-color: #2CDF89;
 }
 
 @media(max-width: 800px) {
@@ -100,14 +96,12 @@ body {
   }
 }
 
-@media (prefers-color-scheme: light) {
 
-  h1,
-  h2,
-  h3,
-  h5 {
-    color: #3A3A3A;
-  }
+h1,
+h2,
+h3,
+h5 {
+  color: #3A3A3A;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -151,12 +145,10 @@ h1 a {
   }
 }
 
-@media (prefers-color-scheme: light) {
-  @media(min-width:801px) {
-    h1 a:hover {
-      background-color: #DF442C;
-      color: white;
-    }
+@media(min-width:801px) {
+  h1 a:hover {
+    background-color: #DF442C;
+    color: white;
   }
 }
 
@@ -226,10 +218,8 @@ footer {
   }
 }
 
-@media (prefers-color-scheme: light) {
-  svg {
-    fill: #3A3A3A
-  }
+svg {
+  fill: #3A3A3A
 }
 
 @media (prefers-color-scheme: dark) {
@@ -249,11 +239,9 @@ svg:hover {
   }
 }
 
-@media (prefers-color-scheme: light) {
-  svg:hover {
-    background-color: #DF442C;
-    fill: #FFFFCC;
-  }
+svg:hover {
+  background-color: #DF442C;
+  fill: #FFFFCC;
 }
 
 #contact-email {
@@ -272,11 +260,9 @@ svg:hover {
   }
 }
 
-@media (prefers-color-scheme: light) {
-  a {
-    text-decoration: none;
-    color: #3A3A3A
-  }
+a {
+  text-decoration: none;
+  color: #3A3A3A
 }
 
 @media(min-width:801px) {
@@ -293,11 +279,9 @@ svg:hover {
   }
 }
 
-@media (prefers-color-scheme: light) {
-  @media(min-width:801px) {
-    a:hover {
-      color: #DF442C;
-    }
+@media(min-width:801px) {
+  a:hover {
+    color: #DF442C;
   }
 }
 
@@ -312,10 +296,8 @@ code {
   }
 }
 
-@media (prefers-color-scheme: light) {
-  code {
-    color: #DF442C;
-  }
+code {
+  color: #DF442C;
 }
 
 #article-footer {
