@@ -1,21 +1,3 @@
-@font-face {
-  font-family: 'Josefin Slab';
-  src: local('JosefinSlab-Regular'),
-    url('./fonts/JosefinSlab-Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: fallback;
-}
-
-@font-face {
-  font-family: 'Roboto';
-  src: local('Roboto-Light'),
-    url('./fonts/Roboto-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: fallback;
-}
-
 @media(min-width: 801px) {
   body {
     grid-template:
@@ -39,7 +21,7 @@
 body {
   display: grid;
   justify-items: stretch;
-  font-family: 'Roboto', sans-serif;
+  font-family: Verdana, Geneva, sans-serif;
   margin: 0;
   font-size: 0.85em;
   font-weight: 300;
@@ -147,7 +129,8 @@ h1,
 h2,
 h3,
 h5 {
-  font-family: 'Josefin Slab', serif;
+  font-family: Georgia, serif;
+  font-weight: 400;
 }
 
 h1 {
