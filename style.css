@@ -142,6 +142,10 @@ h1 a {
   padding-top: 10px;
 }
 
+h3 {
+  font-size:2em
+}
+
 @media(min-width:801px) {
   h1 a:hover {
     text-decoration: none;
@@ -197,6 +201,10 @@ ul {
   list-style: none;
   margin-left: 0;
   padding-left: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
 }
 
 li:before {
@@ -369,6 +377,42 @@ code {
 
 #article-footer {
   margin: 1em 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  #article-footer a {
+    text-decoration: underline;
+    color: #FFFFCC
+  }
+
+  #article-footer a:hover {
+    text-decoration: none;
+    color: #2CDF89
+  }
+}
+
+@media (prefers-color-scheme: no-preference) {
+  #article-footer a {
+    text-decoration: underline;
+    color: #3A3A3A
+  }
+
+  #article-footer a:hover {
+    text-decoration: none;
+    color: #DF442C
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  #article-footer a {
+    text-decoration: underline;
+    color: #3A3A3A
+  }
+
+  #article-footer a:hover {
+    text-decoration: none;
+    color: #DF442C
+  }
 }
 
 .indent-1 {

@@ -11,12 +11,11 @@
 >
 
 <link
-  href="style.css"
+  href="../../style.css"
   rel="stylesheet"
 >
 
-<title>Ged Kirkham</title>
-
+<title>Ged Kirkham - Manupulating a json file with bash</title>
 
 <body>
   <div id="ribbon-wrapper">
@@ -28,50 +27,252 @@
   </header>
 
   <main id="grid-main">
-    <section>
+    <article>
       <header>
-        <h2>what i love</h2>
+        <h2>manipulating a json file with bash</h2>
+        <h5>published 2020/01/06</h5>
       </header>
-      <p>design, ux, creation, creativity, exploration, development, empathy, community and love. i strive to give
-        everything, and aim to leave things better than how i found them. reading is a passion, and a vital resource
-        for
-        wisdom. always looking to experience something new, and always aiming to be a better person.</p>
-    </section>
 
-    <section>
-      <header>
-        <h2>skills</h2>
-      </header>
-      <p>worked as a software tester for three years before taking a sideways step into the world of web
-        development.
+      <h3>introduction</h3>
+      <p>
+        i was tasked with adding the titles of all countries to an i18n language file and as this list was 244 lines long, i
+        did not want to spend my entire day manipulating each individual line. an easy way to automate this
+        is with a bash script.
       </p>
 
-      <p>as a full-stack developer, i have worked with vue.js and quasar to build both a simple spa, and complex
-        translation dashboard. developed both rest and graphql api's to retrieve and post data to a sql database.
-        worked
-        with the django framework which required upskilling in python, and also required me to better understand crsf,
-        and user authentication.</p>
+      <h3>inputs and outputs</h3>
+      <p>
+        the input file is an object that lists all the countries with their associated iso code. my intention is to have
+        each key set to an i18n variable so that it is compatible with the users local language setting. in
+        order to complete
+        this, i want to modify the <code>input.txt</code> file so that each parameter's key is set to an i18n variable
+        that
+        is specified by the imported <code>i18n.js</code> file. the <code>i18n.js</code> file will contain all of the
+        countries listed in english.
+      </p>
 
-      <p>as a software tester, i developed and executed test scripts for web and mobile applications. designed and
-        maintained test metrics for stakeholders. maintained a test automation suite. developed proficient knowledge
-        of
-        xquery to execute complex queries within a nosql marklogic database to both inject and locate data.
-        implemented
-        complex bash scripts to be more efficient in testing.</p>
-    </section>
+      <h4>input.txt</h4>
+      <code>
+        const countriesMap = {<br>
+        'United Kingdom': 'UK',<br>
+        'United States': 'US',<br>
+        'Côte d'Ivoire': 'CI'<br>
+        }<br>
+        <br>
+        export default as countriesMap<br>
+      </code>
 
-    <section>
-      <header>
-        <h2>blog roll</h2>
-      </header>
+      <h4>countriesMap.js</h4>
+      <code>
+        import i18n from '@/src/utils/i18n.js<br>
+        <br>
+        const countriesMap = {<br>
+        [i18n.t('country.uk')]: 'UK',<br>
+        [i18n.t('country.us')]: 'US',<br>
+        [i18n.t('country.ci')]: 'CI'<br>
+        }<br>
+        <br>
+        export default as countriesMap<br>
+      </code>
 
-      <ul>
-        <li><a href="./blog/post/bash-i18n.html">manipulating a json file with bash</a></li>
-        <li><a href="./blog/post/loading-icon-button-tutorial.html">creating a refresh button with javascript and css
-            animation</a></li>
-        <li><a href="./blog/post/google-fonts.html">how to use google fonts</a></li>
-      </ul>
-    </section>
+      <h4>i18n.js</h4>
+      <code>
+        country {<br>
+        "uk":"United Kingdom",<br>
+        "us":"United States",<br>
+        "ci":"Côte d'Ivoire"<br>
+        }<br>
+      </code>
+
+      <h3>shell script</h3>
+      <p>
+        the full script below.
+      </p>
+
+      <code>
+        initialLine=2<br>
+        finalLine=4<br>
+        <br>
+        echo -e "import i18n from '@/src/utils/i18n.js\n" > countriesMap.js<br>
+        head -n 1 input.txt >> countriesMap.js<br>
+        <br>
+        echo "country {" > i18n.txt<br>
+        <br>
+        cat input.txt | sed -n $initialLine','${finalLine}p |<br>
+        while read line;<br>
+        do<br>
+        iso=${line#*:}<br>
+        cleaned=`echo $iso | sed "s/'//g; s/,//g"`<br>
+        echo "[i18n.t('country.${cleaned,,}')]:${iso}" >> countriesMap.js<br>
+        <br>
+        country=${line%:*}<br>
+        lastChar=`echo "${iso: -1}"`<br>
+        <br>
+        if [ $lastChar != ',' ]<br>
+        then<br>
+        lastChar=''<br>
+        fi<br>
+        <br>
+        countryTrimmed=${country:1}<br>
+        countryTrimmed=${countryTrimmed%?}<br>
+        echo "\"${cleaned,,}\":\"${countryTrimmed}\"${lastChar}" >> i18n.txt<br>
+        done<br>
+        <br>
+        tail -n +$((finalLine + 1)) input.txt >> countriesMap.js<br>
+        <br>
+        echo "}" >> i18n.txt<br>
+      </code>
+
+      <h4>for those wanting it to be broken down a bit further.</h4>
+      <p>
+        i specified the first and last line of the input.txt
+        file that i want to modify within the coming <code>while</code> loop - the <code>while</code> loop is where the transformation of the countries
+        and their respective iso code takes place.
+      </p>
+
+      <code>
+        initialLine=2<br>
+        finalLine=4<br>
+      </code>
+
+      <p>
+        as i will be using i18n.js variables within countriesMap.js, i will need to import it within the respective
+        file. the below code simply
+        creates a new file titled <code>countriesMap.js</code> if the file does not exist, or if it does exist, empty
+        the contents of the file before writing anything to it. the <code>-e</code> option has been specified as i want
+        to enable the interpretation of <code>\n</code> listed at the end of the string. the echo command already writes
+        each given string with a newline, but i wanted there to be an extra new line to give some visual separation.
+        <code>></code> is then used to redirect the output of echo to <code>countriesMap.js</code>.
+      </p>
+
+      <code>
+        echo -e "import i18n from '@/src/utils/i18n.js\n" > countriesMap.js<br>
+      </code>
+
+      <p>
+        the input file contains the object declaration - line 1, and i don't want to pass this to the <code>while</code> loop, but i
+        do want to include it in the countries.map.js. to write this line to <code>countriesMap.js</code>, i can use the
+        <code>head</code> command which will print the first 10 lines if no options are specified. the <code>-n 1</code>
+        option specifies that from the head of the document, only the first line is read. this is then appended
+        <code>>></code> to <code>countriesMap.js</code>
+      </p>
+
+      <code>
+        head -n 1 input.txt >> countriesMap.js
+      </code>
+
+      <p>
+        to loop through the long list of countries, we need to initiate a <code>while</code> loop. the content of
+        <code>input.txt</code> is first passed to <code>sed</code> via the <code>|</code> operator. <code>sed</code>
+        allows us to select a subset of lines that we want to pass to the <code>while</code> loop. this is specified by
+        <code>$initialLine','${finalLine}p</code> - line 2 to 4. the output of <code>sed</code> is then passed to the
+        <code>while</code> loop which iterates through the input line by line.
+      </p>
+
+      <code>
+        cat input.txt | sed -n $initialLine','${finalLine}p |<br>
+        while read line;<br>
+      </code>
+
+      <p>
+        due to the above steps, the below three lines will be processed within the <code>while</code> loop.
+      </p>
+
+      <code>
+        'United Kingdom': 'UK',<br>
+        'United States': 'US',<br>
+        'Côte d'Ivoire': 'CI'
+      </code>
+
+      <p>
+        firstly, we want to grab the iso code. this can be done by using a combination of <code>line</code> which is the
+        line we are currently working on, then splitting the string on the <code>:</code> character, and removing
+        everything before - and including - the colon character.
+      </p>
+
+      <code>
+        iso=${line#*:}<br>
+      </code>
+
+      <p>
+        the <code>iso</code> variable will need some cleaning, so the <code>sed</code> stream editor is employed to
+        remove all single quotes, and commas from the string.
+      </p>
+
+      <code>
+        cleaned=`echo $iso | sed "s/'//g; s/,//g"`<br>
+      </code>
+
+      <p>
+        <code>cleaned</code> and <code>iso</code> string variables are then ready to be brought together in a string, and passed into the
+        countriesMap.js file. as that is being done, the <code>cleaned</code> string is manipulated to
+        lower case by <code>,,</code>.
+      </p>
+
+      <code>
+        echo "[i18n.t('country.${cleaned,,}')]:${iso}" >> countriesMap.js<br>
+      </code>
+
+      <p>
+        we also want to retrieve the country title and this can be achieved to a similar process above. instead of using
+        the <code>#</code> character which removes everything prior and including the specified character, we use
+        <code>%</code> which removes everything <i>after</i> the specified character.
+      </p>
+
+      <code>
+        country=${line%:*}<br>
+      </code>
+
+      <p>
+        next, we want to grab the last character of the iso variable, and check to see if it a comma. if it a comma, we can determine that it is not the final line in the loop
+        so the comma should be added. if it is not a comma, we know we have reached the final line and no comma needs to be added. this is determined by the if statement.
+      </p>
+
+      <code>
+        lastChar=`echo "${iso: -1}"`<br>
+        <br>
+        if [ $lastChar != ',' ]<br>
+        then<br>
+        lastChar=''<br>
+        fi<br>
+      </code>
+
+      <p>
+        the country titles are still surrounded by apostrophes. these can be removed by the below commands. <code>:1</code> remove the character at index 0. 
+        <code>%?</code> returns a string from index 0 to the strings length -1.
+      </p>
+
+      <code>
+        countryTrimmed=${country:1}<br>
+        countryTrimmed=${countryTrimmed%?}<br>
+      </code>
+
+      <p>
+        we then concatenate the strings together to form our final string and print that to <code>i18n.txt</code>. this is then repeared for everyline.
+      </p>
+
+      <code>
+        echo "\"${cleaned,,}\":\"${countryTrimmed}\"${lastChar}" >> i18n.txt<br>
+        done<br>
+      </code>
+
+      <p>
+        the last step is to grab the final line from the <code>input.txt</code> and output it to <code>countriesMap.js</code>. by default, the <code>tail</code>
+        command reads the last 10 lines from a file, but by specifying <code>-n</code> and a line number <code>+$((finalLine + 1))</code>, we can pick the line that
+        we want.
+      </p>
+
+      <code>
+        tail -n +$((finalLine + 1)) input.txt >> countriesMap.js<br>
+      </code>
+
+      <!-- TODO: check the footer url is correct -->
+      <footer id="article-footer">if you would like to make any amendments, please create a pull request via my <a
+          href="https://github.com/gedkirkham/gedkirkham.dev/blob/master/blog/post/i18n.html"
+          target="_blank"
+        >github account</a>.
+      </footer>
+    </article>
   </main>
 
   <footer>
