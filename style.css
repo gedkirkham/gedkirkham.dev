@@ -142,6 +142,10 @@ h1 a {
   padding-top: 10px;
 }
 
+h3 {
+  font-size:2em
+}
+
 @media(min-width:801px) {
   h1 a:hover {
     text-decoration: none;
