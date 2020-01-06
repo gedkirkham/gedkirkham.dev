@@ -237,12 +237,32 @@
         fi<br>
       </code>
 
+      <p>
+        the country titles are still surrounded by apostrophes. these can be removed by the below commands. <code>:1</code> remove the character at index 0. 
+        <code>%?</code> returns a string from index 0 to the strings length -1.
+      </p>
+
       <code>
         countryTrimmed=${country:1}<br>
         countryTrimmed=${countryTrimmed%?}<br>
+      </code>
+
+      <p>
+        we then concatenate the strings together to form our final string and print that to <code>i18n.txt</code>. this is then repeared for everyline.
+      </p>
+
+      <code>
         echo "\"${cleaned,,}\":\"${countryTrimmed}\"${lastChar}" >> i18n.txt<br>
         done<br>
-        <br>
+      </code>
+
+      <p>
+        the last step is to grab the final line from the <code>input.txt</code> and output it to <code>countriesMap.js</code>. by default, the <code>tail</code>
+        command reads the last 10 lines from a file, but by specifying <code>-n</code> and a line number <code>+$((finalLine + 1))</code>, we can pick the line that
+        we want.
+      </p>
+
+      <code>
         tail -n +$((finalLine + 1)) input.txt >> countriesMap.js<br>
       </code>
 
