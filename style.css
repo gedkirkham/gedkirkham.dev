@@ -371,6 +371,42 @@ code {
   margin: 1em 0;
 }
 
+@media (prefers-color-scheme: dark) {
+  #article-footer a {
+    text-decoration: underline;
+    color: #FFFFCC
+  }
+
+  #article-footer a:hover {
+    text-decoration: none;
+    color: #2CDF89
+  }
+}
+
+@media (prefers-color-scheme: no-preference) {
+  #article-footer a {
+    text-decoration: underline;
+    color: #3A3A3A
+  }
+
+  #article-footer a:hover {
+    text-decoration: none;
+    color: #DF442C
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  #article-footer a {
+    text-decoration: underline;
+    color: #3A3A3A
+  }
+
+  #article-footer a:hover {
+    text-decoration: none;
+    color: #DF442C
+  }
+}
+
 .indent-1 {
   margin: 0;
   padding: 0 0 0 20px;
