@@ -9,11 +9,24 @@
   name="Description"
   content="Ged Kirkham is a full-stack developer from London, UK."
 >
-
+  
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#DF442C" />
 <link
   href="style.css"
   rel="stylesheet"
 >
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => {
+          console.log('Service worker registered.', reg);
+        });
+  });
+}
+</script>
 
 <title>Ged Kirkham</title>
 
