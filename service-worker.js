@@ -1,5 +1,11 @@
 const FILES_TO_CACHE = [
     '/index.html',
+    '/style.css',
+    '/files/Ged-Kirkhams-cv-full-stack-web-dev-v3.pdf',
+    '/blog/img/google-font-relStylesheet.jpg',
+    '/blog/img/google-fonts-stylesheet.jpg',
+    '/blog/img/hosted-fonts.jpg',
+    '/blog/img/refresh-icon.svg',
     '/blog/post/bash-i18n.html',
     '/blog/post/google-fonts.html',
     '/blog/post/loading-icon-button-tutorial.html'
