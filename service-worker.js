@@ -36,36 +36,19 @@ self.addEventListener('activate', event => {
 })
 
 self.addEventListener('fetch', event => {
-    if (event.request.mode !== 'navigate') return // Not a page navigation, bail.
-    
     let splitUrl
     if (event.request.url.includes(':5500/')) splitUrl = event.request.url.split(':5500')
     else splitUrl = event.request.url.split('.dev')
-    
-    let fileToCache
-    switch(splitUrl[1]) {
-        case '/':
-        case FILES_TO_CACHE[0]:
-            fileToCache = FILES_TO_CACHE[0]
-            break
-        case FILES_TO_CACHE[1]:
-            fileToCache = FILES_TO_CACHE[1]
-            break
-        case FILES_TO_CACHE[2]:
-            fileToCache = FILES_TO_CACHE[2]
-            break
-        case FILES_TO_CACHE[3]:
-            fileToCache = FILES_TO_CACHE[3]
-            break
-    }
+
+    const FILE_TO_CACHE = splitUrl[1] === '/' ? FILES_TO_CACHE[0] : splitUrl[1]
 
     event.respondWith(
         fetch(event.request)
         .catch(() => {
                 return caches.open(CACHE_NAME)
                     .then((cache) => {
-                        console.log('[ServiceWorker] Loading cached file:', fileToCache)
-                        return cache.match(fileToCache)
+                        console.log('[ServiceWorker] Loading cached file:', FILE_TO_CACHE)
+                        return cache.match(FILE_TO_CACHE)
                     })
             })
     )
