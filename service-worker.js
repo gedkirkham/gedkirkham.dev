@@ -5,7 +5,7 @@ const FILES_TO_CACHE = [
     '/blog/post/loading-icon-button-tutorial.html'
 ]
 
-const CACHE_NAME = '50'
+const CACHE_NAME = '1'
 
 self.addEventListener('install', event => {
     event.waitUntil(
