@@ -11,7 +11,7 @@ const FILES_TO_CACHE = [
     '/blog/post/loading-icon-button-tutorial.html'
 ]
 
-const CACHE_NAME = '2'
+const CACHE_NAME = 'static-cache-v3'
 
 self.addEventListener('install', event => {
     event.waitUntil(
@@ -36,20 +36,17 @@ self.addEventListener('activate', event => {
 })
 
 self.addEventListener('fetch', event => {
-    let splitUrl
-    if (event.request.url.includes(':5500/')) splitUrl = event.request.url.split(':5500')
-    else splitUrl = event.request.url.split('.dev')
-
-    const FILE_TO_CACHE = splitUrl[1] === '/' ? FILES_TO_CACHE[0] : splitUrl[1]
-
     event.respondWith(
-        fetch(event.request)
-        .catch(() => {
-                return caches.open(CACHE_NAME)
-                    .then((cache) => {
-                        console.log('[ServiceWorker] Loading cached file:', FILE_TO_CACHE)
-                        return cache.match(FILE_TO_CACHE)
-                    })
+        caches.open(CACHE_NAME).then(cache => {
+          return cache.match(event.request)
+              .then(response => {
+                return response || fetch(event.request)
+                    .then(response => {
+                    // If the response was good, clone it and store it in the cache.
+                    if (response.status === 200) cache.put(event.request.url, response.clone())
+                    return response
+                })
             })
+        })
     )
 })
