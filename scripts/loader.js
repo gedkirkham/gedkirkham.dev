@@ -23,7 +23,6 @@ window.loadComponent = (function() {
         // return parser.parseFromString(URL, 'text/html')
 
         return fetch( URL ).then( ( response ) => {
-            console.log(response.text())
             return response.text();
           } )
           .then( ( html ) => {
