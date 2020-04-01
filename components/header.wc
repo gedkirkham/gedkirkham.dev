@@ -1,27 +1,11 @@
 <template>
-    <header id="grid-header">
+    <header>
         <h1><a href="/">Ged Kirkhamaaaaaaaaaaa</a></h1>
     </header>
 </template>
 
 <style>
-#ribbon-wrapper {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-}
 
-#ribbon {
-  position: absolute;
-  z-index: -1;
-}
-
-#grid-header {
-  grid-area: header;
-  margin-top: 35px;
-}
 </style>
 
 <script>
