@@ -2,36 +2,46 @@ console.log('loader.js')
 
 window.loadComponent = (function() {
     console.log('loadComponent')
-    function loadComponent(URL) {
-        console.log('inside loadComponent')
-        // const parser = new DOMParser()
-    //     let stringitem = `<div id="ribbon-wrapper">
-    //     <div id="ribbon"></div>
-    // </div>
-    
-    // <header id="grid-header">
-    //     <h1><a href="/">Ged Kirkhamaaaaaaaaaaa</a></h1>
-    // </header>
-    
-    // <style>
-    
-    // </style>
-    
-    // <script>
-    
-    // </script>`
-        // return parser.parseFromString(URL, 'text/html')
-
+    function fetchAndParse() {
         return fetch( URL ).then( ( response ) => {
             return response.text();
-          } )
-          .then( ( html ) => {
-            const parser = new DOMParser(); // 1
+          } ).then( ( html ) => {
+            const parser = new DOMParser();
+            const document = parser.parseFromString( html, 'text/html' );
+            const head = document.head;
+            const template = head.querySelector( 'template' );
+            const style = head.querySelector( 'style' );
+            const script = head.querySelector( 'script' );
           
-            return parser.parseFromString( html, 'text/html' ); // 2
+            return {
+              template,
+              style,
+              script
+            };
           } );
+        }
+    
+        function registerComponent( { template, style, script } ) {
+            class UnityComponent extends HTMLElement {
+              connectedCallback() {
+                this._upcast();
+              }
+          
+              _upcast() {
+                const shadow = this.attachShadow( { mode: 'open' } );
+          
+                shadow.appendChild( style.cloneNode( true ) );
+                shadow.appendChild( document.importNode( template.content, true ) );
+              }
+            }
+            return customElements.define( 'g-header', UnityComponent );
+          }
+    
+    function loadComponent(URL) {
+        console.log('inside loadComponent')
+        console.log('before return loadComponet')
+        return fetchAndParse(URL).then(registerComponent)
     }
-    console.log('before return loadComponet')
     return loadComponent
 }())
 
