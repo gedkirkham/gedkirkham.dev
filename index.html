@@ -37,14 +37,10 @@ if ('serviceWorker' in navigator) {
     <div id="ribbon"></div>
   </div>
 
-  <!-- <header id="grid-header">
-    <h1><a href="/">Ged Kirkham</a></h1>
-  </header> -->
-
   <g-header id="grid-header"></g-header>
   <script src="./scripts/loader.js"></script>
   <script>
-    loadComponent('https://hardcore-jang-38efcf.netlify.com/components/header.wc').then( ( component ) => {
+    loadComponent('/components/header.wc').then( ( component ) => {
       console.log( component );
     } );
   </script>
