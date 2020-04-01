@@ -2,7 +2,7 @@ console.log('loader.js')
 
 window.loadComponent = (function() {
     console.log('loadComponent')
-    function fetchAndParse() {
+    function fetchAndParse(URL) {
         return fetch( URL ).then( ( response ) => {
             return response.text();
           } ).then( ( html ) => {
