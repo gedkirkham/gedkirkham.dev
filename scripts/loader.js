@@ -2,8 +2,8 @@ console.log('loader.js')
 
 window.loadComponent = (function() {
     console.log('loadComponent')
-    // function loadComponent(URL) {
-    //     console.log('inside loadComponent')
+    function loadComponent(URL) {
+        console.log('inside loadComponent')
         // const parser = new DOMParser()
     //     let stringitem = `<div id="ribbon-wrapper">
     //     <div id="ribbon"></div>
@@ -31,9 +31,9 @@ window.loadComponent = (function() {
           
             return parser.parseFromString( html, 'text/html' ); // 2
           } );
-    // }
-    // console.log('before return loadComponet')
-    // return loadComponent
+    }
+    console.log('before return loadComponet')
+    return loadComponent
 }())
 
 
