@@ -33,13 +33,21 @@ if ('serviceWorker' in navigator) {
 
 
 <body>
-  <div id="ribbon-wrapper">
+  <!-- <div id="ribbon-wrapper">
     <div id="ribbon"></div>
   </div>
 
   <header id="grid-header">
     <h1><a href="/">Ged Kirkham</a></h1>
-  </header>
+  </header> -->
+
+  <custom-header>aaaaaaaaaaaaaaaaaaaa</custom-header>
+  <script src="./scripts/loader.js" />
+  <script>
+    loadComponentAA('./components/header.wc').then( ( component ) => {
+      console.log( component );
+    } );
+  </script>
 
   <main id="grid-main">
     <section>
