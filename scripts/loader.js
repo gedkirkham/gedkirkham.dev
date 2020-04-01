@@ -2,7 +2,7 @@ console.log('loader.js')
 
 window.loadComponent = (function() {
     console.log('loadComponent')
-    function loadComponentAA(URL) {
+    function loadComponentAAA(URL) {
         console.log('inside loadComponent')
         // const parser = new DOMParser()
     //     let stringitem = `<div id="ribbon-wrapper">
@@ -33,7 +33,7 @@ window.loadComponent = (function() {
           } );
     }
     console.log('before return loadComponet')
-    return loadComponentAA
+    return loadComponentAAA
 }())
 
 
