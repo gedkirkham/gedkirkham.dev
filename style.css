@@ -48,6 +48,19 @@ body {
   }
 }
 
+#ribbon-wrapper {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+#ribbon {
+  position: absolute;
+  z-index: -1;
+}
+
 @media(min-width: 801px) {
   #ribbon {
     width: 200vw;

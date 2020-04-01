@@ -1,8 +1,4 @@
 <template>
-    <div id="ribbon-wrapper">
-        <div id="ribbon"></div>
-    </div>
-
     <header id="grid-header">
         <h1><a href="/">Ged Kirkhamaaaaaaaaaaa</a></h1>
     </header>
