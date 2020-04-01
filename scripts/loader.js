@@ -44,8 +44,3 @@ window.loadComponent = (function() {
     }
     return loadComponent
 }())
-
-
-// fetch( './components/header.wc' ).then( ( response ) => {
-//     return response.text();
-//   } )
