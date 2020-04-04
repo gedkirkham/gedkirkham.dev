@@ -29,7 +29,7 @@ h1 {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: calc(3em + 1vw);
   margin-bottom: 0.2em;
 }
 
