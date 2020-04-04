@@ -8,7 +8,9 @@ const FILES_TO_CACHE = [
     '/blog/img/refresh-icon.svg',
     '/blog/post/bash-i18n.html',
     '/blog/post/google-fonts.html',
-    '/blog/post/loading-icon-button-tutorial.html'
+    '/blog/post/loading-icon-button-tutorial.html',
+    '/components/header.wc',
+    '/scripts/loader.js'
 ]
 
 const CACHE_NAME = 'static-cache-v6'
