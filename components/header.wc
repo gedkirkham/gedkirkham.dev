@@ -29,7 +29,7 @@ h1 {
 }
 
 h1 {
-  font-size: calc(3em + 1vw);
+  font-size: clamp(3rem, calc(3rem + 1vw), 4rem);
   margin-bottom: 0.2em;
 }
 

@@ -130,21 +130,22 @@ h5 {
 }
 
 h5 {
-  font-size: calc(1em + 1vw);
+  font-size: clamp(1rem, calc(1rem + 1vw), 2rem);
   margin-top: 0;
 }
 
 h4 {
-  font-size: calc(1em + 1vw);
+  font-size: clamp(1rem, calc(1rem + 1vw), 2rem);
+  font-weight: 300;
 }
 
 h3 {
   margin-top: 2em;
-  font-size: calc(1em + 1vw);
+  font-size: clamp(1rem, calc(1rem + 1vw), 2rem);
 }
 
 h2 {
-  font-size: calc(2em + 1vw);
+  font-size: clamp(2rem, calc(2rem + 1vw), 3rem);
   margin-bottom: 0;
 }
 
