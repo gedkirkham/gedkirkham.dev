@@ -124,6 +124,7 @@ body {
 
 h2,
 h3,
+h4,
 h5 {
   font-family: Georgia, serif;
   font-weight: 400;
@@ -135,12 +136,12 @@ h5 {
 }
 
 h4 {
-  font-size: clamp(1rem, calc(1rem + 1vw), 2rem);
+  font-size: clamp(1rem, calc(1rem + 1vw), 1.5rem);
   font-weight: 300;
 }
 
 h3 {
-  margin-top: 2em;
+  margin-top: 1em;
   font-size: clamp(1rem, calc(1rem + 1vw), 2rem);
 }
 
