@@ -1,3 +1,8 @@
+:root {
+    --colour-primary: #2CDF89;
+    --colour-secondary: #DF442C;
+}
+
 @media(min-width: 801px) {
   body {
     grid-template:
@@ -236,21 +241,21 @@ svg:hover {
 
 @media (prefers-color-scheme: dark) {
   svg:hover {
-    background-color: #2CDF89;
+    background-color: var(--colour-primary);
     fill: #3A3A3A;
   }
 }
 
 @media (prefers-color-scheme: no-preference) {
   svg:hover {
-    background-color: #DF442C;
+    background-color: var(--colour-secondary);
     fill: #FFFFCC;
   }
 }
 
 @media (prefers-color-scheme: light) {
   svg:hover {
-    background-color: #DF442C;
+    background-color: var(--colour-secondary);
     fill: #FFFFCC;
   }
 }
@@ -294,7 +299,7 @@ svg:hover {
 @media (prefers-color-scheme: dark) {
   @media(min-width:801px) {
     a:hover {
-      color: #2CDF89;
+      color: var(--colour-primary);
     }
   }
 }
@@ -302,7 +307,7 @@ svg:hover {
 @media (prefers-color-scheme: no-preference) {
   @media(min-width:801px) {
     a:hover {
-      color: #DF442C;
+      color: var(--colour-secondary);
     }
   }
 }
@@ -310,7 +315,7 @@ svg:hover {
 @media (prefers-color-scheme: light) {
   @media(min-width:801px) {
     a:hover {
-      color: #DF442C;
+      color: var(--colour-secondary);
     }
   }
 }
@@ -322,19 +327,19 @@ code {
 
 @media (prefers-color-scheme: dark) {
   code {
-    color: #2CDF89;
+    color: var(--colour-primary);
   }
 }
 
 @media (prefers-color-scheme: no-preference) {
   code {
-    color: #DF442C;
+    color: var(--colour-secondary);
   }
 }
 
 @media (prefers-color-scheme: light) {
   code {
-    color: #DF442C;
+    color: var(--colour-secondary);
   }
 }
 
@@ -350,7 +355,7 @@ code {
 
   #article-footer a:hover {
     text-decoration: none;
-    color: #2CDF89
+    color: var(--colour-primary)
   }
 }
 
@@ -362,7 +367,7 @@ code {
 
   #article-footer a:hover {
     text-decoration: none;
-    color: #DF442C
+    color: var(--colour-secondary)
   }
 }
 
@@ -374,7 +379,7 @@ code {
 
   #article-footer a:hover {
     text-decoration: none;
-    color: #DF442C
+    color: var(--colour-secondary)
   }
 }
 
