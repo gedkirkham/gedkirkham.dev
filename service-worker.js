@@ -13,7 +13,7 @@ const FILES_TO_CACHE = [
     '/scripts/loader.js'
 ]
 
-const CACHE_NAME = 'static-cache-v9'
+const CACHE_NAME = 'static-cache-v10'
 
 self.addEventListener('install', event => {
     event.waitUntil(
