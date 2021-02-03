@@ -53,50 +53,39 @@ body {
   }
 }
 
-#ribbon-wrapper {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-}
-
 #ribbon {
-  position: absolute;
-  z-index: -1;
+    position: absolute;
+    z-index: -1;
+    border-style: none none solid solid;
 }
 
 @media(min-width: 801px) {
   #ribbon {
-    width: 200vw;
-    height: 100vh;
-    transform: translateY(-50vh) translateX(-80vw) rotate(-40deg)
+    border-width: 0 0 120vh 60vw;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   #ribbon {
-    background-color: #DF442C;
+    border-color: transparent transparent transparent var(--colour-secondary);
   }
 }
 
 @media (prefers-color-scheme: no-preference) {
   #ribbon {
-    background-color: #2CDF89;
+    border-color: transparent transparent transparent var(--colour-secondary);
   }
 }
 
 @media (prefers-color-scheme: light) {
   #ribbon {
-    background-color: #2CDF89;
+    border-color: transparent transparent transparent var(--colour-primary);
   }
 }
 
 @media(max-width: 800px) {
   #ribbon {
-    width: 130vw;
-    height: 100vh;
-    transform: translateY(-40vh) translateX(-60vw) rotate(50deg);
+    border-width: 0 0 80vh 80vw;
   }
 }
 
