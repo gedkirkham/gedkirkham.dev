@@ -1,0 +1,22 @@
+{
+  "name": "gedkirkham.dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gedkirkham/gedkirkham.dev.git"
+  },
+  "author": "Ged Kirkham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gedkirkham/gedkirkham.dev/issues"
+  },
+  "homepage": "https://github.com/gedkirkham/gedkirkham.dev#readme",
+  "dependencies": {
+    "gk-wc-button": "^0.1.0"
+  }
+}
