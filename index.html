@@ -15,6 +15,9 @@
     />
 
     <script src="./node_modules/gk-wc-button/index.js"></script>
+    <script>
+        loadComponent('./node_modules/gk-wc-button/button.wc')
+    </script>
 
     <link
         rel="manifest"
@@ -81,10 +84,6 @@
                     id="gkButton"
                 ></gk-wc-button>
 
-                <script src="./node_modules/gk-wc-button/index.js"></script>
-                <script>
-                    loadComponent('./node_modules/gk-wc-button/button.wc')
-                </script>
                 <script>
                     const EL = document.getElementById('gkButton')
                     EL.addEventListener('click', function () {
