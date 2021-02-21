@@ -1,4 +1,4 @@
-window.loadComponent = (function() {
+window.loadHeaderComponent = (function() {
     function fetchAndParse(URL) {
         return fetch( URL )
             .then(response => { return response.text() })
@@ -34,9 +34,9 @@ window.loadComponent = (function() {
         return customElements.define( 'g-header', UnityComponent )
     }
     
-    function loadComponent(URL) {
+    function loadHeaderComponent(URL) {
         return fetchAndParse(URL).then(registerComponent)
     }
 
-    return loadComponent
+    return loadHeaderComponent
 }())
