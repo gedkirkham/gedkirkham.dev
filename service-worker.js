@@ -10,10 +10,12 @@ const FILES_TO_CACHE = [
     '/blog/post/google-fonts.html',
     '/blog/post/loading-icon-button-tutorial.html',
     '/components/header.wc',
-    '/scripts/loader.js'
+    '/scripts/loader.js',
+    '/node_modules/gk-wc-button/index.js',
+    '/node_modules/gk-wc-button/button.wc',
 ]
 
-const CACHE_NAME = 'static-cache-v15'
+const CACHE_NAME = 'static-cache-v16'
 
 self.addEventListener('install', event => {
     event.waitUntil(
