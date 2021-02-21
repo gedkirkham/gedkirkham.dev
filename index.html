@@ -75,16 +75,15 @@
                     </h2>
                 </header>
 
-                <gk-wc-button
-                    style="margin: 0 8px;"
-                    id="gkButton"
-                ></gk-wc-button>
-                <script src="./node_modules/gk-wc-button/index.js"></script>
+                <!-- style="margin: 0 8px;"
+                    id="gkButton" -->
+                <gk-wc-button></gk-wc-button>
+                <script src="./scripts/index.js"></script>
                 <script>
-                    loadComponent('./node_modules/gk-wc-button/button.wc')
+                    loadComponent('./components/button.wc')
                 </script>
 
-                <script>
+                <!-- <script>
                     const EL = document.getElementById('gkButton')
                     EL.addEventListener('click', function () {
                         EL.setAttribute('loading', true)
@@ -93,7 +92,7 @@
                             EL.setAttribute('loading', false)
                         }, 1000)
                     })
-                </script>
+                </script> -->
 
                 <p>
                     "npm i gk-wc-button" to try it yourself
