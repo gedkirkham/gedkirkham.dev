@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/gedkirkham/gedkirkham.dev#readme",
   "dependencies": {
-    "gk-wc-button": "^0.4.1"
+    "gk-wc-button": "^0.7.0"
   }
 }
