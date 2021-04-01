@@ -1,60 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="UTF-8">
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1"
->
-<meta
-  name="Description"
-  content="Ged Kirkham is a full-stack developer from London, UK."
->
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+    <meta
+        name="Description"
+        content="Ged Kirkham is a full-stack developer from London, UK."
+    >
 
-<link
-  href="../../style.css"
-  rel="stylesheet"
->
+    <link
+        href="../../style.css"
+        rel="stylesheet"
+    >
 
-<title>Ged Kirkham - Manipulating a json file with bash</title>
+    <title>Ged Kirkham - Manipulating a json file with bash</title>
 
-<body>
-  <div id="ribbon-wrapper">
-    <div id="ribbon"></div>
-  </div>
+    <body>
+        <div id="ribbon"></div>
 
-  <g-header id="grid-header"></g-header>
-  <script src="/scripts/loader.js"></script>
-  <script>
-    loadComponent('/components/header.wc')
-  </script>
+        <header id="grid-header">
+            <h1>
+                <a href="/">
+                    Ged Kirkham
+                </a>
+            </h1>
+            JavaScript - Python - HTML - CSS
+        </header>
 
-  <main id="grid-main">
-    <article>
-      <header>
-        <h2>manipulating a json file with bash</h2>
-        <h5>published 2020/01/06</h5>
-      </header>
+        <main id="grid-main">
+            <article>
+                <header>
+                    <h2>manipulating a json file with bash</h2>
+                    <h5>published 2020/01/06</h5>
+                </header>
 
-      <h3>introduction</h3>
-      <p>
-        i was tasked with adding the titles of all countries to an i18n language file and as this list was 244 lines long, i
-        did not want to spend my entire day manipulating each individual line. an easy way to automate this
-        is with a bash script.
-      </p>
+                <h3>introduction</h3>
+                <p>
+                    i was tasked with adding the titles of all countries to an i18n language file and as this list was
+                    244 lines long, i
+                    did not want to spend my entire day manipulating each individual line. an easy way to automate this
+                    is with a bash script.
+                </p>
 
-      <h3>inputs and outputs</h3>
-      <p>
-        the input file is an object that lists all the countries with their associated iso code. my intention is to have
-        each key set to an i18n variable so that it is compatible with the users local language setting. in
-        order to complete
-        this, i want to modify the <code>input.txt</code> file so that each parameter's key is set to an i18n variable
-        that
-        is specified by the imported <code>i18n.js</code> file. the <code>i18n.js</code> file will contain all of the
-        countries listed in english.
-      </p>
+                <h3>inputs and outputs</h3>
+                <p>
+                    the input file is an object that lists all the countries with their associated iso code. my
+                    intention is to have
+                    each key set to an i18n variable so that it is compatible with the users local language setting. in
+                    order to complete
+                    this, i want to modify the <code>input.txt</code> file so that each parameter's key is set to an
+                    i18n variable
+                    that
+                    is specified by the imported <code>i18n.js</code> file. the <code>i18n.js</code> file will contain
+                    all of the
+                    countries listed in english.
+                </p>
 
-      <h4>input.txt</h4>
-      <code>
+                <h4>input.txt</h4>
+                <code>
         const countriesMap = {<br>
         'United Kingdom': 'UK',<br>
         'United States': 'US',<br>
@@ -64,8 +69,8 @@
         export default as countriesMap<br>
       </code>
 
-      <h4>countriesMap.js</h4>
-      <code>
+                <h4>countriesMap.js</h4>
+                <code>
         import i18n from '@/src/utils/i18n.js<br>
         <br>
         const countriesMap = {<br>
@@ -77,8 +82,8 @@
         export default as countriesMap<br>
       </code>
 
-      <h4>i18n.js</h4>
-      <code>
+                <h4>i18n.js</h4>
+                <code>
         country {<br>
         "uk":"United Kingdom",<br>
         "us":"United States",<br>
@@ -86,12 +91,12 @@
         }<br>
       </code>
 
-      <h3>shell script</h3>
-      <p>
-        the full script below.
-      </p>
+                <h3>shell script</h3>
+                <p>
+                    the full script below.
+                </p>
 
-      <code>
+                <code>
         initialLine=2<br>
         finalLine=4<br>
         <br>
@@ -125,112 +130,134 @@
         echo "}" >> i18n.txt<br>
       </code>
 
-      <h4>for those wanting it to be broken down a bit further.</h4>
-      <p>
-        i specified the first and last line of the input.txt
-        file that i want to modify within the coming <code>while</code> loop - the <code>while</code> loop is where the transformation of the countries
-        and their respective iso code takes place.
-      </p>
+                <h4>for those wanting it to be broken down a bit further.</h4>
+                <p>
+                    i specified the first and last line of the input.txt
+                    file that i want to modify within the coming <code>while</code> loop - the <code>while</code> loop
+                    is where the transformation of the countries
+                    and their respective iso code takes place.
+                </p>
 
-      <code>
+                <code>
         initialLine=2<br>
         finalLine=4<br>
       </code>
 
-      <p>
-        as i will be using i18n.js variables within countriesMap.js, i will need to import it within the respective
-        file. the below code simply
-        creates a new file titled <code>countriesMap.js</code> if the file does not exist, or if it does exist, empty
-        the contents of the file before writing anything to it. the <code>-e</code> option has been specified as i want
-        to enable the interpretation of <code>\n</code> listed at the end of the string. the echo command already writes
-        each given string with a newline, but i wanted there to be an extra new line to give some visual separation.
-        <code>></code> is then used to redirect the output of echo to <code>countriesMap.js</code>.
-      </p>
+                <p>
+                    as i will be using i18n.js variables within countriesMap.js, i will need to import it within the
+                    respective
+                    file. the below code simply
+                    creates a new file titled <code>countriesMap.js</code> if the file does not exist, or if it does
+                    exist, empty
+                    the contents of the file before writing anything to it. the <code>-e</code> option has been
+                    specified as i want
+                    to enable the interpretation of <code>\n</code> listed at the end of the string. the echo command
+                    already writes
+                    each given string with a newline, but i wanted there to be an extra new line to give some visual
+                    separation.
+                    <code>></code> is then used to redirect the output of echo to <code>countriesMap.js</code>.
+                </p>
 
-      <code>
+                <code>
         echo -e "import i18n from '@/src/utils/i18n.js\n" > countriesMap.js<br>
       </code>
 
-      <p>
-        the input file contains the object declaration - line 1, and i don't want to pass this to the <code>while</code> loop, but i
-        do want to include it in the countries.map.js. to write this line to <code>countriesMap.js</code>, i can use the
-        <code>head</code> command which will print the first 10 lines if no options are specified. the <code>-n 1</code>
-        option specifies that from the head of the document, only the first line is read. this is then appended
-        <code>>></code> to <code>countriesMap.js</code>
-      </p>
+                <p>
+                    the input file contains the object declaration - line 1, and i don't want to pass this to the
+                    <code>while</code> loop, but i
+                    do want to include it in the countries.map.js. to write this line to <code>countriesMap.js</code>, i
+                    can use the
+                    <code>head</code> command which will print the first 10 lines if no options are specified. the
+                    <code>-n 1</code>
+                    option specifies that from the head of the document, only the first line is read. this is then
+                    appended
+                    <code>>></code> to <code>countriesMap.js</code>
+                </p>
 
-      <code>
+                <code>
         head -n 1 input.txt >> countriesMap.js
       </code>
 
-      <p>
-        to loop through the long list of countries, we need to initiate a <code>while</code> loop. the content of
-        <code>input.txt</code> is first passed to <code>sed</code> via the <code>|</code> operator. <code>sed</code>
-        allows us to select a subset of lines that we want to pass to the <code>while</code> loop. this is specified by
-        <code>$initialLine','${finalLine}p</code> - line 2 to 4. the output of <code>sed</code> is then passed to the
-        <code>while</code> loop which iterates through the input line by line.
-      </p>
+                <p>
+                    to loop through the long list of countries, we need to initiate a <code>while</code> loop. the
+                    content of
+                    <code>input.txt</code> is first passed to <code>sed</code> via the <code>|</code> operator.
+                    <code>sed</code>
+                    allows us to select a subset of lines that we want to pass to the <code>while</code> loop. this is
+                    specified by
+                    <code>$initialLine','${finalLine}p</code> - line 2 to 4. the output of <code>sed</code> is then
+                    passed to the
+                    <code>while</code> loop which iterates through the input line by line.
+                </p>
 
-      <code>
+                <code>
         cat input.txt | sed -n $initialLine','${finalLine}p |<br>
         while read line;<br>
       </code>
 
-      <p>
-        due to the above steps, the below three lines will be processed within the <code>while</code> loop.
-      </p>
+                <p>
+                    due to the above steps, the below three lines will be processed within the <code>while</code> loop.
+                </p>
 
-      <code>
+                <code>
         'United Kingdom': 'UK',<br>
         'United States': 'US',<br>
         'Côte d'Ivoire': 'CI'
       </code>
 
-      <p>
-        firstly, we want to grab the iso code. this can be done by using a combination of <code>line</code> which is the
-        line we are currently working on, then splitting the string on the <code>:</code> character, and removing
-        everything before - and including - the colon character.
-      </p>
+                <p>
+                    firstly, we want to grab the iso code. this can be done by using a combination of <code>line</code>
+                    which is the
+                    line we are currently working on, then splitting the string on the <code>:</code> character, and
+                    removing
+                    everything before - and including - the colon character.
+                </p>
 
-      <code>
+                <code>
         iso=${line#*:}<br>
       </code>
 
-      <p>
-        the <code>iso</code> variable will need some cleaning, so the <code>sed</code> stream editor is employed to
-        remove all single quotes, and commas from the string.
-      </p>
+                <p>
+                    the <code>iso</code> variable will need some cleaning, so the <code>sed</code> stream editor is
+                    employed to
+                    remove all single quotes, and commas from the string.
+                </p>
 
-      <code>
+                <code>
         cleaned=`echo $iso | sed "s/'//g; s/,//g"`<br>
       </code>
 
-      <p>
-        <code>cleaned</code> and <code>iso</code> string variables are then ready to be brought together in a string, and passed into the
-        countriesMap.js file. as that is being done, the <code>cleaned</code> string is manipulated to
-        lower case by <code>,,</code>.
-      </p>
+                <p>
+                    <code>cleaned</code> and <code>iso</code> string variables are then ready to be brought together in
+                    a string, and passed into the
+                    countriesMap.js file. as that is being done, the <code>cleaned</code> string is manipulated to
+                    lower case by <code>,,</code>.
+                </p>
 
-      <code>
+                <code>
         echo "[i18n.t('country.${cleaned,,}')]:${iso}" >> countriesMap.js<br>
       </code>
 
-      <p>
-        we also want to retrieve the country title and this can be achieved to a similar process above. instead of using
-        the <code>#</code> character which removes everything prior and including the specified character, we use
-        <code>%</code> which removes everything <i>after</i> the specified character.
-      </p>
+                <p>
+                    we also want to retrieve the country title and this can be achieved to a similar process above.
+                    instead of using
+                    the <code>#</code> character which removes everything prior and including the specified character,
+                    we use
+                    <code>%</code> which removes everything <i>after</i> the specified character.
+                </p>
 
-      <code>
+                <code>
         country=${line%:*}<br>
       </code>
 
-      <p>
-        next, we want to grab the last character of the iso variable, and check to see if it a comma. if it a comma, we can determine that it is not the final line in the loop
-        so the comma should be added. if it is not a comma, we know we have reached the final line and no comma needs to be added. this is determined by the if statement.
-      </p>
+                <p>
+                    next, we want to grab the last character of the iso variable, and check to see if it a comma. if it
+                    a comma, we can determine that it is not the final line in the loop
+                    so the comma should be added. if it is not a comma, we know we have reached the final line and no
+                    comma needs to be added. this is determined by the if statement.
+                </p>
 
-      <code>
+                <code>
         lastChar=`echo "${iso: -1}"`<br>
         <br>
         if [ $lastChar != ',' ]<br>
@@ -239,155 +266,160 @@
         fi<br>
       </code>
 
-      <p>
-        the country titles are still surrounded by apostrophes. these can be removed by the below commands. <code>:1</code> remove the character at index 0. 
-        <code>%?</code> returns a string from index 0 to the strings length -1.
-      </p>
+                <p>
+                    the country titles are still surrounded by apostrophes. these can be removed by the below commands.
+                    <code>:1</code> remove the character at index 0.
+                    <code>%?</code> returns a string from index 0 to the strings length -1.
+                </p>
 
-      <code>
+                <code>
         countryTrimmed=${country:1}<br>
         countryTrimmed=${countryTrimmed%?}<br>
       </code>
 
-      <p>
-        we then concatenate the strings together to form our final string and print that to <code>i18n.txt</code>. this is then repeated for every line.
-      </p>
+                <p>
+                    we then concatenate the strings together to form our final string and print that to
+                    <code>i18n.txt</code>. this is then repeated for every line.
+                </p>
 
-      <code>
+                <code>
         echo "\"${cleaned,,}\":\"${countryTrimmed}\"${lastChar}" >> i18n.txt<br>
         done<br>
       </code>
 
-      <p>
-        the last step is to grab the final line from the <code>input.txt</code> and output it to <code>countriesMap.js</code>. by default, the <code>tail</code>
-        command reads the last 10 lines from a file, but by specifying <code>-n</code> and a line number <code>+$((finalLine + 1))</code>, we can pick the line that
-        we want.
-      </p>
+                <p>
+                    the last step is to grab the final line from the <code>input.txt</code> and output it to
+                    <code>countriesMap.js</code>. by default, the <code>tail</code>
+                    command reads the last 10 lines from a file, but by specifying <code>-n</code> and a line number
+                    <code>+$((finalLine + 1))</code>, we can pick the line that
+                    we want.
+                </p>
 
-      <code>
+                <code>
         tail -n +$((finalLine + 1)) input.txt >> countriesMap.js<br>
       </code>
 
-      <!-- TODO: check the footer url is correct -->
-      <footer id="article-footer">if you would like to make any amendments, please create a pull request via my <a
-          href="https://github.com/gedkirkham/gedkirkham.dev/blob/master/blog/post/i18n.html"
-          target="_blank"
-        >github account</a>.
-      </footer>
-    </article>
-  </main>
+                <!-- TODO: check the footer url is correct -->
+                <footer id="article-footer">if you would like to make any amendments, please create a pull request via
+                    my <a
+                        href="https://github.com/gedkirkham/gedkirkham.dev/blob/master/blog/post/i18n.html"
+                        target="_blank"
+                    >github account</a>.
+                </footer>
+            </article>
+        </main>
 
-  <footer>
-    <header style="margin-bottom:1em">
-      <h2>contact me</h2>
-    </header>
-    <a
-      id="contact-email"
-      href="mailto:gedkirkham@protonmail.com"
-    >gedkirkham@protonmail.com</a>
-    <nav>
-      <button
-        aria-label="Linkedin profile link"
-        class="social-icon-buttons"
-        onclick="location.href = 'https://www.linkedin.com/in/gedkirkham/'"
-      >
-        <svg
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          width="17"
-          height="17"
-          viewBox="0 0 17 17"
-        >
-          <g>
-          </g>
-          <path
-            d="M0.698 5.823h3.438v10.323h-3.438v-10.323zM2.438 0.854c-1.167 0-1.938 0.771-1.938 1.782 0 0.989 0.74 1.781 1.896 1.781h0.021c1.198 0 1.948-0.792 1.938-1.781-0.011-1.011-0.74-1.782-1.917-1.782zM12.552 5.583c-1.829 0-2.643 1.002-3.094 1.709v-1.469h-3.427c0 0 0.042 0.969 0 10.323h3.427v-5.761c0-0.312 0.032-0.615 0.114-0.843 0.251-0.615 0.812-1.25 1.762-1.25 1.238 0 1.738 0.948 1.738 2.333v5.521h3.428v-5.917c0-3.167-1.688-4.646-3.948-4.646z"
-          />
-        </svg>
-      </button>
-      <button
-        aria-label="Github profile link"
-        class="social-icon-buttons"
-        onclick="location.href = 'https://github.com/gedkirkham'"
-      >
-        <svg
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          width="17"
-          height="17"
-          viewBox="0 0 17 17"
-        >
-          <g>
-          </g>
-          <path
-            d="M13.077 11.115c0 0.746-0.389 1.962-1.308 1.962-0.92 0-1.309-1.216-1.309-1.962 0-0.745 0.389-1.962 1.309-1.962 0.919 0 1.308 1.217 1.308 1.962zM5.231 9.153c-0.919 0-1.308 1.217-1.308 1.962 0 0.746 0.389 1.962 1.308 1.962 0.919 0 1.308-1.216 1.308-1.962 0-0.745-0.389-1.962-1.308-1.962zM17 9.317c0 1.135-0.112 2.34-0.623 3.382-1.349 2.728-5.057 2.993-7.713 2.993-2.697 0-6.63-0.234-8.030-2.993-0.522-1.032-0.634-2.247-0.634-3.382 0-1.492 0.409-2.901 1.39-4.045-0.184-0.562-0.276-1.155-0.276-1.738 0-0.766 0.173-1.531 0.521-2.227 1.614 0 2.646 0.705 3.872 1.665 1.032-0.245 2.094-0.357 3.157-0.357 0.96 0 1.931 0.103 2.861 0.327 1.216-0.95 2.247-1.635 3.841-1.635 0.348 0.695 0.521 1.461 0.521 2.227 0 0.583-0.092 1.165-0.276 1.717 0.981 1.154 1.389 2.574 1.389 4.066zM14.711 11.115c0-1.563-0.949-2.942-2.615-2.942-0.674 0-1.317 0.123-1.992 0.215-0.531 0.082-1.062 0.112-1.604 0.112s-1.073-0.030-1.604-0.112c-0.664-0.092-1.318-0.215-1.992-0.215-1.665 0-2.615 1.379-2.615 2.942 0 3.126 2.86 3.606 5.353 3.606h1.717c2.493 0.001 5.352-0.48 5.352-3.606z"
-          />
-        </svg>
-      </button>
-      <button
-        aria-label="Instagram profile link"
-        class="social-icon-buttons"
-        onclick="location.href = 'https://instagram.com/gedkirkham'"
-      >
-        <svg
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          width="17"
-          height="17"
-          viewBox="0 0 17 17"
-        >
-          <g>
-          </g>
-          <path
-            d="M13 0h-9c-2.2 0-4 1.8-4 4v9c0 2.2 1.8 4 4 4h9c2.2 0 4-1.8 4-4v-9c0-2.2-1.8-4-4-4zM16 13c0 1.654-1.346 3-3 3h-9c-1.654 0-3-1.346-3-3v-6h3.207c-0.286 0.61-0.457 1.283-0.457 2 0 2.619 2.131 4.75 4.75 4.75s4.75-2.131 4.75-4.75c0-0.717-0.171-1.39-0.457-2h3.207v6zM12.25 9c0 2.068-1.682 3.75-3.75 3.75s-3.75-1.682-3.75-3.75 1.682-3.75 3.75-3.75 3.75 1.682 3.75 3.75zM12.152 6c-0.872-1.059-2.176-1.75-3.652-1.75s-2.78 0.691-3.652 1.75h-3.848v-2c0-1.654 1.346-3 3-3h9c1.654 0 3 1.346 3 3v2h-3.848zM14.454 2.722v1.298c0 0.299-0.244 0.543-0.542 0.543h-1.368c-0.3-0.001-0.544-0.245-0.544-0.543v-1.298c0-0.299 0.244-0.543 0.544-0.543h1.368c0.298 0 0.542 0.244 0.542 0.543z"
-          />
-        </svg>
-      </button>
-      <button
-        aria-label="Soundcloud profile link"
-        class="social-icon-buttons"
-        onclick="location.href = 'https://soundcloud.com/gedkirkham'"
-      >
-        <svg
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          width="17"
-          height="17"
-          viewBox="0 0 17 17"
-        >
-          <g>
-          </g>
-          <path
-            d="M0.882 10.132l-0.139 0.875c-0.007 0.035-0.027 0.062-0.062 0.062s-0.056-0.027-0.062-0.062l-0.119-0.875 0.118-0.889c0.007-0.035 0.028-0.062 0.062-0.062s0.055 0.027 0.062 0.062l0.14 0.889zM1.521 10.132l-0.18 1.409c-0.007 0.035-0.035 0.062-0.069 0.062-0.035 0-0.062-0.027-0.062-0.068l-0.16-1.403c0.16-1.438 0.16-1.438 0.16-1.438 0-0.034 0.027-0.062 0.062-0.062 0.034 0 0.062 0.028 0.069 0.062l0.18 1.438zM2.153 10.132l-0.173 1.646c0 0.041-0.035 0.076-0.077 0.076s-0.076-0.035-0.083-0.076l-0.146-1.646 0.146-1.701c0.007-0.049 0.042-0.083 0.083-0.083 0.042 0 0.077 0.034 0.077 0.083l0.173 1.701zM2.792 10.132l-0.16 1.694c-0.007 0.056-0.048 0.091-0.097 0.091-0.048 0-0.090-0.035-0.090-0.091l-0.146-1.694 0.146-1.75c0-0.056 0.042-0.090 0.090-0.090 0.049 0 0.090 0.034 0.097 0.090l0.16 1.75zM3.431 10.132l-0.146 1.709c-0.007 0.062-0.056 0.111-0.111 0.111s-0.104-0.049-0.104-0.111l-0.139-1.709 0.139-1.624c0-0.057 0.049-0.105 0.104-0.105 0.056 0 0.104 0.049 0.111 0.105l0.146 1.624zM4.083 10.132l-0.146 1.709c0 0.068-0.056 0.125-0.118 0.125-0.069 0-0.118-0.057-0.125-0.125l-0.125-1.709c0.125-2.64 0.125-2.64 0.125-2.64 0.008-0.068 0.056-0.124 0.125-0.124 0.062 0 0.118 0.056 0.118 0.124l0.146 2.64zM4.722 10.146l-0.132 1.695c0 0.076-0.063 0.131-0.132 0.131-0.076 0-0.131-0.055-0.139-0.131l-0.111-1.695c0.111-3.25 0.111-3.25 0.111-3.25 0.007-0.076 0.062-0.132 0.139-0.132 0.069 0 0.132 0.056 0.132 0.132l0.132 3.25zM5.396 10.132l-0.125 1.681c-0.007 0.083-0.069 0.146-0.153 0.146-0.076 0-0.139-0.062-0.146-0.146l-0.111-1.681 0.111-3.514c0-0.083 0.070-0.153 0.146-0.153 0.083 0 0.146 0.070 0.153 0.153l0.125 3.514zM6.056 10.132l-0.112-3.632c-0.006-0.090-0.076-0.167-0.166-0.167-0.083 0-0.16 0.077-0.16 0.167l-0.098 3.632 0.098 1.674c0.007 0.090 0.077 0.16 0.16 0.16 0.090 0 0.16-0.070 0.167-0.16l0.111-1.674zM6.722 10.132l-0.104 1.66c0 0.097-0.076 0.174-0.174 0.174-0.097 0-0.167-0.077-0.173-0.174l-0.098-1.66 0.098-3.542c0-0.098 0.076-0.174 0.173-0.174 0.098 0 0.174 0.076 0.174 0.174l0.104 3.542zM7.403 10.139l-0.098 1.64c0 0.104-0.083 0.188-0.187 0.188s-0.188-0.084-0.194-0.188l-0.083-1.64 0.083-3.416c0.007-0.111 0.090-0.195 0.194-0.195 0.104 0 0.18 0.084 0.187 0.195l0.098 3.416zM8.076 10.139l-0.083-4.070c0-0.069-0.035-0.132-0.090-0.166-0.035-0.021-0.070-0.035-0.111-0.035-0.042 0-0.076 0.014-0.111 0.035-0.056 0.035-0.091 0.097-0.091 0.166l-0.007 0.041-0.070 4.021c0 0 0 0.007 0.077 1.639 0 0 0 0 0 0.008 0 0.041 0.014 0.083 0.042 0.117 0.042 0.049 0.097 0.076 0.16 0.076 0.056 0 0.104-0.027 0.139-0.062 0.042-0.034 0.062-0.083 0.062-0.139l0.007-0.166 0.076-1.465zM8.681 11.743c0 0.118-0.097 0.215-0.215 0.215s-0.215-0.097-0.223-0.215l-0.041-0.791-0.042-0.813 0.083-4.416v-0.022c0.007-0.062 0.035-0.125 0.084-0.166 0.034-0.027 0.083-0.049 0.138-0.049 0.035 0 0.077 0.014 0.104 0.035 0.062 0.034 0.104 0.104 0.111 0.18l0.097 4.438-0.096 1.604zM14.535 11.966c-5.452 0-5.458 0-5.458 0-0.118-0.014-0.215-0.104-0.215-0.229v-6.245c0-0.117 0.042-0.173 0.195-0.229 0.382-0.152 0.812-0.235 1.257-0.235 1.812 0 3.299 1.388 3.458 3.159 0.236-0.097 0.493-0.153 0.764-0.153 1.083 0 1.965 0.883 1.965 1.973-0.001 1.084-0.883 1.959-1.966 1.959z"
-          />
-        </svg>
-      </button>
-      <button
-        aria-label="Twitter profile link"
-        class="social-icon-buttons"
-        onclick="location.href = 'https://twitter.com/gedkirkham'"
-      >
-        <svg
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          width="17"
-          height="17"
-          viewBox="0 0 17 17"
-        >
-          <g>
-          </g>
-          <path
-            d="M17 3.236c-0.626 0.27-1.305 0.464-2.007 0.539 0.723-0.431 1.273-1.11 1.532-1.919-0.669 0.399-1.424 0.69-2.211 0.841-0.636-0.68-1.542-1.1-2.545-1.1-1.931 0-3.484 1.564-3.484 3.483 0 0.27 0.033 0.54 0.086 0.799-2.891-0.15-5.469-1.531-7.184-3.646-0.302 0.517-0.475 1.111-0.475 1.759 0 1.208 0.615 2.275 1.553 2.901-0.571-0.022-1.111-0.184-1.575-0.442 0 0.010 0 0.032 0 0.043 0 1.692 1.197 3.095 2.794 3.419-0.291 0.075-0.604 0.118-0.917 0.118-0.226 0-0.442-0.021-0.657-0.054 0.442 1.381 1.726 2.384 3.257 2.417-1.198 0.938-2.697 1.488-4.326 1.488-0.291 0-0.561-0.010-0.841-0.042 1.543 0.992 3.376 1.564 5.351 1.564 6.407 0 9.913-5.307 9.913-9.912 0-0.152 0-0.302-0.010-0.454 0.678-0.496 1.271-1.112 1.746-1.802zM14.263 5.491c0 3.701-2.765 8.912-8.913 8.912-0.492 0-0.979-0.040-1.458-0.118 0.67-0.276 1.305-0.646 1.891-1.104 0.333-0.26 0.466-0.702 0.332-1.103-0.134-0.401-0.505-0.675-0.928-0.684-0.545-0.011-1.055-0.197-1.467-0.509 0.004-0.001 0.008-0.002 0.012-0.003 0.452-0.116 0.763-0.528 0.751-0.994-0.011-0.467-0.343-0.862-0.8-0.955-0.652-0.132-1.203-0.516-1.559-1.046 0.035 0.002 0.069 0.004 0.104 0.005 0.013 0 0.025 0 0.038 0 0.432 0 0.817-0.278 0.951-0.692 0.138-0.426-0.024-0.891-0.397-1.14-0.63-0.42-1.030-1.096-1.098-1.841 1.824 1.582 4.146 2.531 6.597 2.658 0.017 0.001 0.035 0.001 0.052 0.001 0.291 0 0.568-0.127 0.759-0.349 0.202-0.235 0.283-0.551 0.22-0.854-0.044-0.209-0.066-0.41-0.066-0.595 0-1.369 1.114-2.483 2.484-2.483 0.698 0 1.342 0.278 1.815 0.784 0.116 0.124 0.261 0.215 0.417 0.266-0.019 0.146-0.006 0.297 0.043 0.444 0.063 0.191 0.18 0.352 0.33 0.47-0.089 0.164-0.132 0.353-0.119 0.544 0.010 0.129 0.009 0.257 0.009 0.386z"
-          />
-        </svg>
-      </button>
-    </nav>
-  </footer>
-</body>
+        <footer>
+            <header style="margin-bottom:1em">
+                <h2>contact me</h2>
+            </header>
+            <a
+                id="contact-email"
+                href="mailto:gedkirkham@protonmail.com"
+            >gedkirkham@protonmail.com</a>
+            <nav>
+                <button
+                    aria-label="Linkedin profile link"
+                    class="social-icon-buttons"
+                    onclick="location.href = 'https://www.linkedin.com/in/gedkirkham/'"
+                >
+                    <svg
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        width="17"
+                        height="17"
+                        viewBox="0 0 17 17"
+                    >
+                        <g>
+                        </g>
+                        <path
+                            d="M0.698 5.823h3.438v10.323h-3.438v-10.323zM2.438 0.854c-1.167 0-1.938 0.771-1.938 1.782 0 0.989 0.74 1.781 1.896 1.781h0.021c1.198 0 1.948-0.792 1.938-1.781-0.011-1.011-0.74-1.782-1.917-1.782zM12.552 5.583c-1.829 0-2.643 1.002-3.094 1.709v-1.469h-3.427c0 0 0.042 0.969 0 10.323h3.427v-5.761c0-0.312 0.032-0.615 0.114-0.843 0.251-0.615 0.812-1.25 1.762-1.25 1.238 0 1.738 0.948 1.738 2.333v5.521h3.428v-5.917c0-3.167-1.688-4.646-3.948-4.646z"
+                        />
+                    </svg>
+                </button>
+                <button
+                    aria-label="Github profile link"
+                    class="social-icon-buttons"
+                    onclick="location.href = 'https://github.com/gedkirkham'"
+                >
+                    <svg
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        width="17"
+                        height="17"
+                        viewBox="0 0 17 17"
+                    >
+                        <g>
+                        </g>
+                        <path
+                            d="M13.077 11.115c0 0.746-0.389 1.962-1.308 1.962-0.92 0-1.309-1.216-1.309-1.962 0-0.745 0.389-1.962 1.309-1.962 0.919 0 1.308 1.217 1.308 1.962zM5.231 9.153c-0.919 0-1.308 1.217-1.308 1.962 0 0.746 0.389 1.962 1.308 1.962 0.919 0 1.308-1.216 1.308-1.962 0-0.745-0.389-1.962-1.308-1.962zM17 9.317c0 1.135-0.112 2.34-0.623 3.382-1.349 2.728-5.057 2.993-7.713 2.993-2.697 0-6.63-0.234-8.030-2.993-0.522-1.032-0.634-2.247-0.634-3.382 0-1.492 0.409-2.901 1.39-4.045-0.184-0.562-0.276-1.155-0.276-1.738 0-0.766 0.173-1.531 0.521-2.227 1.614 0 2.646 0.705 3.872 1.665 1.032-0.245 2.094-0.357 3.157-0.357 0.96 0 1.931 0.103 2.861 0.327 1.216-0.95 2.247-1.635 3.841-1.635 0.348 0.695 0.521 1.461 0.521 2.227 0 0.583-0.092 1.165-0.276 1.717 0.981 1.154 1.389 2.574 1.389 4.066zM14.711 11.115c0-1.563-0.949-2.942-2.615-2.942-0.674 0-1.317 0.123-1.992 0.215-0.531 0.082-1.062 0.112-1.604 0.112s-1.073-0.030-1.604-0.112c-0.664-0.092-1.318-0.215-1.992-0.215-1.665 0-2.615 1.379-2.615 2.942 0 3.126 2.86 3.606 5.353 3.606h1.717c2.493 0.001 5.352-0.48 5.352-3.606z"
+                        />
+                    </svg>
+                </button>
+                <button
+                    aria-label="Instagram profile link"
+                    class="social-icon-buttons"
+                    onclick="location.href = 'https://instagram.com/gedkirkham'"
+                >
+                    <svg
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        width="17"
+                        height="17"
+                        viewBox="0 0 17 17"
+                    >
+                        <g>
+                        </g>
+                        <path
+                            d="M13 0h-9c-2.2 0-4 1.8-4 4v9c0 2.2 1.8 4 4 4h9c2.2 0 4-1.8 4-4v-9c0-2.2-1.8-4-4-4zM16 13c0 1.654-1.346 3-3 3h-9c-1.654 0-3-1.346-3-3v-6h3.207c-0.286 0.61-0.457 1.283-0.457 2 0 2.619 2.131 4.75 4.75 4.75s4.75-2.131 4.75-4.75c0-0.717-0.171-1.39-0.457-2h3.207v6zM12.25 9c0 2.068-1.682 3.75-3.75 3.75s-3.75-1.682-3.75-3.75 1.682-3.75 3.75-3.75 3.75 1.682 3.75 3.75zM12.152 6c-0.872-1.059-2.176-1.75-3.652-1.75s-2.78 0.691-3.652 1.75h-3.848v-2c0-1.654 1.346-3 3-3h9c1.654 0 3 1.346 3 3v2h-3.848zM14.454 2.722v1.298c0 0.299-0.244 0.543-0.542 0.543h-1.368c-0.3-0.001-0.544-0.245-0.544-0.543v-1.298c0-0.299 0.244-0.543 0.544-0.543h1.368c0.298 0 0.542 0.244 0.542 0.543z"
+                        />
+                    </svg>
+                </button>
+                <button
+                    aria-label="Soundcloud profile link"
+                    class="social-icon-buttons"
+                    onclick="location.href = 'https://soundcloud.com/gedkirkham'"
+                >
+                    <svg
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        width="17"
+                        height="17"
+                        viewBox="0 0 17 17"
+                    >
+                        <g>
+                        </g>
+                        <path
+                            d="M0.882 10.132l-0.139 0.875c-0.007 0.035-0.027 0.062-0.062 0.062s-0.056-0.027-0.062-0.062l-0.119-0.875 0.118-0.889c0.007-0.035 0.028-0.062 0.062-0.062s0.055 0.027 0.062 0.062l0.14 0.889zM1.521 10.132l-0.18 1.409c-0.007 0.035-0.035 0.062-0.069 0.062-0.035 0-0.062-0.027-0.062-0.068l-0.16-1.403c0.16-1.438 0.16-1.438 0.16-1.438 0-0.034 0.027-0.062 0.062-0.062 0.034 0 0.062 0.028 0.069 0.062l0.18 1.438zM2.153 10.132l-0.173 1.646c0 0.041-0.035 0.076-0.077 0.076s-0.076-0.035-0.083-0.076l-0.146-1.646 0.146-1.701c0.007-0.049 0.042-0.083 0.083-0.083 0.042 0 0.077 0.034 0.077 0.083l0.173 1.701zM2.792 10.132l-0.16 1.694c-0.007 0.056-0.048 0.091-0.097 0.091-0.048 0-0.090-0.035-0.090-0.091l-0.146-1.694 0.146-1.75c0-0.056 0.042-0.090 0.090-0.090 0.049 0 0.090 0.034 0.097 0.090l0.16 1.75zM3.431 10.132l-0.146 1.709c-0.007 0.062-0.056 0.111-0.111 0.111s-0.104-0.049-0.104-0.111l-0.139-1.709 0.139-1.624c0-0.057 0.049-0.105 0.104-0.105 0.056 0 0.104 0.049 0.111 0.105l0.146 1.624zM4.083 10.132l-0.146 1.709c0 0.068-0.056 0.125-0.118 0.125-0.069 0-0.118-0.057-0.125-0.125l-0.125-1.709c0.125-2.64 0.125-2.64 0.125-2.64 0.008-0.068 0.056-0.124 0.125-0.124 0.062 0 0.118 0.056 0.118 0.124l0.146 2.64zM4.722 10.146l-0.132 1.695c0 0.076-0.063 0.131-0.132 0.131-0.076 0-0.131-0.055-0.139-0.131l-0.111-1.695c0.111-3.25 0.111-3.25 0.111-3.25 0.007-0.076 0.062-0.132 0.139-0.132 0.069 0 0.132 0.056 0.132 0.132l0.132 3.25zM5.396 10.132l-0.125 1.681c-0.007 0.083-0.069 0.146-0.153 0.146-0.076 0-0.139-0.062-0.146-0.146l-0.111-1.681 0.111-3.514c0-0.083 0.070-0.153 0.146-0.153 0.083 0 0.146 0.070 0.153 0.153l0.125 3.514zM6.056 10.132l-0.112-3.632c-0.006-0.090-0.076-0.167-0.166-0.167-0.083 0-0.16 0.077-0.16 0.167l-0.098 3.632 0.098 1.674c0.007 0.090 0.077 0.16 0.16 0.16 0.090 0 0.16-0.070 0.167-0.16l0.111-1.674zM6.722 10.132l-0.104 1.66c0 0.097-0.076 0.174-0.174 0.174-0.097 0-0.167-0.077-0.173-0.174l-0.098-1.66 0.098-3.542c0-0.098 0.076-0.174 0.173-0.174 0.098 0 0.174 0.076 0.174 0.174l0.104 3.542zM7.403 10.139l-0.098 1.64c0 0.104-0.083 0.188-0.187 0.188s-0.188-0.084-0.194-0.188l-0.083-1.64 0.083-3.416c0.007-0.111 0.090-0.195 0.194-0.195 0.104 0 0.18 0.084 0.187 0.195l0.098 3.416zM8.076 10.139l-0.083-4.070c0-0.069-0.035-0.132-0.090-0.166-0.035-0.021-0.070-0.035-0.111-0.035-0.042 0-0.076 0.014-0.111 0.035-0.056 0.035-0.091 0.097-0.091 0.166l-0.007 0.041-0.070 4.021c0 0 0 0.007 0.077 1.639 0 0 0 0 0 0.008 0 0.041 0.014 0.083 0.042 0.117 0.042 0.049 0.097 0.076 0.16 0.076 0.056 0 0.104-0.027 0.139-0.062 0.042-0.034 0.062-0.083 0.062-0.139l0.007-0.166 0.076-1.465zM8.681 11.743c0 0.118-0.097 0.215-0.215 0.215s-0.215-0.097-0.223-0.215l-0.041-0.791-0.042-0.813 0.083-4.416v-0.022c0.007-0.062 0.035-0.125 0.084-0.166 0.034-0.027 0.083-0.049 0.138-0.049 0.035 0 0.077 0.014 0.104 0.035 0.062 0.034 0.104 0.104 0.111 0.18l0.097 4.438-0.096 1.604zM14.535 11.966c-5.452 0-5.458 0-5.458 0-0.118-0.014-0.215-0.104-0.215-0.229v-6.245c0-0.117 0.042-0.173 0.195-0.229 0.382-0.152 0.812-0.235 1.257-0.235 1.812 0 3.299 1.388 3.458 3.159 0.236-0.097 0.493-0.153 0.764-0.153 1.083 0 1.965 0.883 1.965 1.973-0.001 1.084-0.883 1.959-1.966 1.959z"
+                        />
+                    </svg>
+                </button>
+                <button
+                    aria-label="Twitter profile link"
+                    class="social-icon-buttons"
+                    onclick="location.href = 'https://twitter.com/gedkirkham'"
+                >
+                    <svg
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        width="17"
+                        height="17"
+                        viewBox="0 0 17 17"
+                    >
+                        <g>
+                        </g>
+                        <path
+                            d="M17 3.236c-0.626 0.27-1.305 0.464-2.007 0.539 0.723-0.431 1.273-1.11 1.532-1.919-0.669 0.399-1.424 0.69-2.211 0.841-0.636-0.68-1.542-1.1-2.545-1.1-1.931 0-3.484 1.564-3.484 3.483 0 0.27 0.033 0.54 0.086 0.799-2.891-0.15-5.469-1.531-7.184-3.646-0.302 0.517-0.475 1.111-0.475 1.759 0 1.208 0.615 2.275 1.553 2.901-0.571-0.022-1.111-0.184-1.575-0.442 0 0.010 0 0.032 0 0.043 0 1.692 1.197 3.095 2.794 3.419-0.291 0.075-0.604 0.118-0.917 0.118-0.226 0-0.442-0.021-0.657-0.054 0.442 1.381 1.726 2.384 3.257 2.417-1.198 0.938-2.697 1.488-4.326 1.488-0.291 0-0.561-0.010-0.841-0.042 1.543 0.992 3.376 1.564 5.351 1.564 6.407 0 9.913-5.307 9.913-9.912 0-0.152 0-0.302-0.010-0.454 0.678-0.496 1.271-1.112 1.746-1.802zM14.263 5.491c0 3.701-2.765 8.912-8.913 8.912-0.492 0-0.979-0.040-1.458-0.118 0.67-0.276 1.305-0.646 1.891-1.104 0.333-0.26 0.466-0.702 0.332-1.103-0.134-0.401-0.505-0.675-0.928-0.684-0.545-0.011-1.055-0.197-1.467-0.509 0.004-0.001 0.008-0.002 0.012-0.003 0.452-0.116 0.763-0.528 0.751-0.994-0.011-0.467-0.343-0.862-0.8-0.955-0.652-0.132-1.203-0.516-1.559-1.046 0.035 0.002 0.069 0.004 0.104 0.005 0.013 0 0.025 0 0.038 0 0.432 0 0.817-0.278 0.951-0.692 0.138-0.426-0.024-0.891-0.397-1.14-0.63-0.42-1.030-1.096-1.098-1.841 1.824 1.582 4.146 2.531 6.597 2.658 0.017 0.001 0.035 0.001 0.052 0.001 0.291 0 0.568-0.127 0.759-0.349 0.202-0.235 0.283-0.551 0.22-0.854-0.044-0.209-0.066-0.41-0.066-0.595 0-1.369 1.114-2.483 2.484-2.483 0.698 0 1.342 0.278 1.815 0.784 0.116 0.124 0.261 0.215 0.417 0.266-0.019 0.146-0.006 0.297 0.043 0.444 0.063 0.191 0.18 0.352 0.33 0.47-0.089 0.164-0.132 0.353-0.119 0.544 0.010 0.129 0.009 0.257 0.009 0.386z"
+                        />
+                    </svg>
+                </button>
+            </nav>
+        </footer>
+    </body>
 
 </html>

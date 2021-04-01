@@ -4,53 +4,53 @@
 }
 
 @media(min-width: 801px) {
-  body {
-    grid-template:
-      ". header ."
-      ". main ."
-      ". footer ."
-      / 1fr 1fr 1fr;
-  }
+    body {
+        grid-template:
+            ". header ."
+            ". main ."
+            ". footer ."
+            / 0.5fr 1fr 0.5fr;
+    }
 }
 
 @media(max-width: 800px) {
-  body {
-    grid-template:
-      ". header ."
-      ". main ."
-      ". footer ."
-      / 0.5fr 6fr 0.5fr;
-  }
+    body {
+        grid-template:
+            ". header ."
+            ". main ."
+            ". footer ."
+            / 0.5fr 6fr 0.5fr;
+    }
 }
 
 body {
-  display: grid;
-  justify-items: stretch;
-  font-family: Verdana, Geneva, sans-serif;
-  margin: 0;
-  font-size: 1em;
-  font-weight: 300;
+    display: grid;
+    justify-items: stretch;
+    font-family: Verdana, Geneva, sans-serif;
+    margin: 0;
+    font-size: 1.3em;
+    font-weight: 300;
 }
 
 @media (prefers-color-scheme: no-preference) {
-  body {
-    background-color: #fafafa;
-    color: #292929
-  }
+    body {
+        background-color: #fafafa;
+        color: #292929
+    }
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
-    background-color: #333;
-    color: #FFFFCC
-  }
+    body {
+        background-color: #333;
+        color: #FFFFCC
+    }
 }
 
 @media (prefers-color-scheme: light) {
-  body {
-    background-color: #fafafa;
-    color: #292929
-  }
+    body {
+        background-color: #fafafa;
+        color: #292929
+    }
 }
 
 #ribbon {
@@ -60,329 +60,470 @@ body {
 }
 
 @media(min-width: 801px) {
-  #ribbon {
-    border-width: 0 0 120vh 60vw;
-  }
+    #ribbon {
+        border-width: 0 0 120vh 60vw;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
-  #ribbon {
-    border-color: transparent transparent transparent var(--colour-secondary);
-  }
+    #ribbon {
+        border-color: transparent transparent transparent var(--colour-secondary);
+    }
 }
 
 @media (prefers-color-scheme: no-preference) {
-  #ribbon {
-    border-color: transparent transparent transparent var(--colour-secondary);
-  }
+    #ribbon {
+        border-color: transparent transparent transparent var(--colour-secondary);
+    }
 }
 
 @media (prefers-color-scheme: light) {
-  #ribbon {
-    border-color: transparent transparent transparent var(--colour-primary);
-  }
+    #ribbon {
+        border-color: transparent transparent transparent var(--colour-primary);
+    }
 }
 
 @media(max-width: 800px) {
-  #ribbon {
-    border-width: 0 0 80vh 80vw;
-  }
+    #ribbon {
+        border-width: 0 0 80vh 80vw;
+    }
 }
 
 @media (prefers-color-scheme: no-preference) {
 
-  h2,
-  h3,
-  h5 {
-    color: #3A3A3A;
-  }
+    h2,
+    h3,
+    h5 {
+        color: #3A3A3A;
+    }
 }
 
 @media (prefers-color-scheme: light) {
 
-  h2,
-  h3,
-  h5 {
-    color: #3A3A3A;
-  }
+    h2,
+    h3,
+    h5 {
+        color: #3A3A3A;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
 
-  h2,
-  h3,
-  h5 {
-    color: #FFFFCC;
-  }
+    h2,
+    h3,
+    h5 {
+        color: #FFFFCC;
+    }
 }
 
 h2,
 h3,
 h4,
 h5 {
-  font-family: Georgia, serif;
-  font-weight: 400;
+    font-family: Georgia, serif;
+    font-weight: 400;
 }
 
 h5 {
-  font-size: clamp(1rem, calc(1rem + 1vw), 2rem);
-  margin-top: 0;
+    font-size: clamp(1rem, calc(1rem + 1vw), 2rem);
+    margin-top: 0;
 }
 
 h4 {
-  font-size: clamp(1rem, calc(1rem + 1vw), 1.5rem);
-  font-weight: 300;
+    font-size: clamp(1rem, calc(1rem + 1vw), 1.5rem);
+    font-weight: 300;
 }
 
 h3 {
-  margin-top: 1em;
-  font-size: clamp(1rem, calc(1rem + 1vw), 2rem);
+    margin-top: 1em;
+    font-size: clamp(1rem, calc(1rem + 1vw), 2rem);
 }
 
 h2 {
-  font-size: clamp(2rem, calc(2rem + 1vw), 3rem);
-  margin-bottom: 0;
+    font-size: clamp(2rem, calc(2rem + 1vw), 3rem);
+    margin-bottom: 0;
 }
 
-
-p {
-  text-align: justify;
-}
 
 section,
 article {
-  margin-top: 3em
+    margin-top: 3em
 }
 
 ul {
-  list-style: none;
-  margin-left: 0;
-  padding-left: 0;
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
 }
 
 ul li {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 li:before {
-  content: '+';
-  padding-right: 5px;
+    content: '+';
+    padding-right: 5px;
 }
 
 #grid-header {
-  grid-area: header;
-  margin-top: 35px;
+    grid-area: header;
+    margin-top: 35px;
 }
 
 #grid-main {
-  grid-area: main;
+    grid-area: main;
 }
 
 footer {
-  justify-items: start;
-  grid-area: footer;
-  margin-bottom: 5em;
+    justify-items: start;
+    grid-area: footer;
+    margin-bottom: 5em;
 }
 
 .social-icon-buttons {
-  border: none;
-  background: transparent;
-  margin: 5px 6px 0 0;
-  padding: 0;
-}
-
-@media(max-width:800px) {
-  .social-icon-buttons {
-    margin: 15px 20px 0 0;
-  }
-}
-
-@media(max-width:800px) {
-  .social-icon-buttons svg {
     border: none;
     background: transparent;
-    height: 19px;
-    width: 19px;
-  }
+    margin: 5px 6px 0 0;
+    padding: 0;
+}
+
+@media(max-width:800px) {
+    .social-icon-buttons {
+        margin: 15px 20px 0 0;
+    }
+}
+
+@media(max-width:800px) {
+    .social-icon-buttons svg {
+        border: none;
+        background: transparent;
+        height: 19px;
+        width: 19px;
+    }
 }
 
 @media (prefers-color-scheme: no-preference) {
-  svg {
-    fill: #3A3A3A
-  }
+    svg {
+        fill: #3A3A3A
+    }
 }
 
 @media (prefers-color-scheme: light) {
-  svg {
-    fill: #3A3A3A
-  }
+    svg {
+        fill: #3A3A3A
+    }
 }
 
 @media (prefers-color-scheme: dark) {
-  svg {
-    fill: #FFFFCC
-  }
+    svg {
+        fill: #FFFFCC
+    }
 }
 
 svg:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {
-  svg:hover {
-    background-color: var(--colour-primary);
-    fill: #3A3A3A;
-  }
+    svg:hover {
+        background-color: var(--colour-primary);
+        fill: #3A3A3A;
+    }
 }
 
 @media (prefers-color-scheme: no-preference) {
-  svg:hover {
-    background-color: var(--colour-secondary);
-    fill: #FFFFCC;
-  }
+    svg:hover {
+        background-color: var(--colour-secondary);
+        fill: #FFFFCC;
+    }
 }
 
 @media (prefers-color-scheme: light) {
-  svg:hover {
-    background-color: var(--colour-secondary);
-    fill: #FFFFCC;
-  }
+    svg:hover {
+        background-color: var(--colour-secondary);
+        fill: #FFFFCC;
+    }
 }
 
 #contact-email {
-  text-decoration: none;
-  margin-top: 20px;
+    text-decoration: none;
+    margin-top: 20px;
 }
 
 #contact-email:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 @media (prefers-color-scheme: dark) {
-  a {
-    text-decoration: none;
-    color: #FFFFCC
-  }
+    a {
+        text-decoration: none;
+        color: #FFFFCC
+    }
 }
 
 @media (prefers-color-scheme: no-preference) {
-  a {
-    text-decoration: none;
-    color: #3A3A3A
-  }
+    a {
+        text-decoration: none;
+        color: #3A3A3A
+    }
 }
 
 @media (prefers-color-scheme: light) {
-  a {
-    text-decoration: none;
-    color: #3A3A3A
-  }
+    a {
+        text-decoration: none;
+        color: #3A3A3A
+    }
 }
 
 @media(min-width:801px) {
-  a:hover {
-    text-decoration: underline;
-  }
+    a:hover {
+        text-decoration: underline;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
-  @media(min-width:801px) {
-    a:hover {
-      color: var(--colour-primary);
+    @media(min-width:801px) {
+        a:hover {
+            color: var(--colour-primary);
+        }
     }
-  }
 }
 
 @media (prefers-color-scheme: no-preference) {
-  @media(min-width:801px) {
-    a:hover {
-      color: var(--colour-secondary);
+    @media(min-width:801px) {
+        a:hover {
+            color: var(--colour-secondary);
+        }
     }
-  }
 }
 
 @media (prefers-color-scheme: light) {
-  @media(min-width:801px) {
-    a:hover {
-      color: var(--colour-secondary);
+    @media(min-width:801px) {
+        a:hover {
+            color: var(--colour-secondary);
+        }
     }
-  }
 }
 
 code {
-  text-justify: none;
-  word-break: break-all;
+    text-justify: none;
+    word-break: break-all;
 }
 
 @media (prefers-color-scheme: dark) {
-  code {
-    color: var(--colour-primary);
-  }
+    code {
+        color: var(--colour-primary);
+    }
 }
 
 @media (prefers-color-scheme: no-preference) {
-  code {
-    color: var(--colour-secondary);
-  }
+    code {
+        color: var(--colour-secondary);
+    }
 }
 
 @media (prefers-color-scheme: light) {
-  code {
-    color: var(--colour-secondary);
-  }
+    code {
+        color: var(--colour-secondary);
+    }
 }
 
 #article-footer {
-  margin: 1em 0;
+    margin: 1em 0;
 }
 
 @media (prefers-color-scheme: dark) {
-  #article-footer a {
-    text-decoration: underline;
-    color: #FFFFCC
-  }
+    #article-footer a {
+        text-decoration: underline;
+        color: #FFFFCC
+    }
 
-  #article-footer a:hover {
-    text-decoration: none;
-    color: var(--colour-primary)
-  }
+    #article-footer a:hover {
+        text-decoration: none;
+        color: var(--colour-primary)
+    }
 }
 
 @media (prefers-color-scheme: no-preference) {
-  #article-footer a {
-    text-decoration: underline;
-    color: #3A3A3A
-  }
+    #article-footer a {
+        text-decoration: underline;
+        color: #3A3A3A
+    }
 
-  #article-footer a:hover {
-    text-decoration: none;
-    color: var(--colour-secondary)
-  }
+    #article-footer a:hover {
+        text-decoration: none;
+        color: var(--colour-secondary)
+    }
 }
 
 @media (prefers-color-scheme: light) {
-  #article-footer a {
-    text-decoration: underline;
-    color: #3A3A3A
-  }
+    #article-footer a {
+        text-decoration: underline;
+        color: #3A3A3A
+    }
 
-  #article-footer a:hover {
-    text-decoration: none;
-    color: var(--colour-secondary)
-  }
+    #article-footer a:hover {
+        text-decoration: none;
+        color: var(--colour-secondary)
+    }
 }
 
 .indent-1 {
-  margin: 0;
-  padding: 0 0 0 20px;
+    margin: 0;
+    padding: 0 0 0 20px;
 }
 
 .indent-2 {
-  margin: 0;
-  padding: 0 0 0 40px;
+    margin: 0;
+    padding: 0 0 0 40px;
 }
 
 .indent-3 {
-  margin: 0;
-  padding: 0 0 0 60px;
+    margin: 0;
+    padding: 0 0 0 60px;
+}
+
+.header__container {
+    height: 350px;
+}
+
+.header_text-center {
+    text-align: center;
+}
+
+.skill-list {
+    text-align: center;
+    display: block;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: clamp(3rem, calc(3rem + 1vw), 4rem);
+    margin-bottom: 0.2em;
+}
+
+h1 a {
+    padding-top: 10px;
+}
+
+@media (prefers-color-scheme: no-preference) {
+    h1 {
+        color: #3A3A3A;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    h1 {
+        color: #3A3A3A;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    h1 {
+        color: #FFFFCC;
+    }
+}
+
+@media(min-width:801px) {
+    h1 a:hover {
+        text-decoration: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    @media(min-width:801px) {
+        h1 a:hover {
+            background-color: #2CDF89;
+            color: #3A3A3A;
+        }
+    }
+}
+
+@media (prefers-color-scheme: no-preference) {
+    @media(min-width:801px) {
+        h1 a:hover {
+            background-color: #DF442C;
+            color: white;
+        }
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    @media(min-width:801px) {
+        h1 a:hover {
+            background-color: #DF442C;
+            color: white;
+        }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    a {
+        text-decoration: none;
+        color: #FFFFCC
+    }
+}
+
+@media (prefers-color-scheme: no-preference) {
+    a {
+        text-decoration: none;
+        color: #3A3A3A
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    a {
+        text-decoration: none;
+        color: #3A3A3A
+    }
+}
+
+@media(min-width:801px) {
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    @media(min-width:801px) {
+        a:hover {
+            color: #2CDF89;
+        }
+    }
+}
+
+@media (prefers-color-scheme: no-preference) {
+    @media(min-width:801px) {
+        a:hover {
+            color: #DF442C;
+        }
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    @media(min-width:801px) {
+        a:hover {
+            color: #DF442C;
+        }
+    }
+}
+
+.header_center {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section_center {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

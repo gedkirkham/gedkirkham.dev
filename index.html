@@ -7,7 +7,7 @@
     >
     <meta
         name="Description"
-        content="Ged Kirkham is a full-stack developer from Liverpool, UK."
+        content="Ged Kirkham is a full-stack developer from Chester, UK."
     >
     <meta
         name="theme-color"
@@ -43,256 +43,252 @@
 
     <body>
         <div id="ribbon"></div>
+        <header
+            id="grid-header"
+            class="header header_center"
+        >
+            <div class="header__container">
+                <h1 class="header_text-center">
+                    <a href="/">
+                        Ged Kirkham
+                    </a>
+                </h1>
 
-        <g-header id="grid-header"></g-header>
-        <script src="./scripts/loader.js"></script>
-        <script>
-            loadHeaderComponent('/components/header.wc')
-        </script>
+                <span class="skill-list">
+                    HTML - CSS - JavaScript - Python
+                </span>
+            </div>
+        </header>
 
         <main id="grid-main">
-            <section>
-                <header>
-                    <h2>what i love</h2>
-                </header>
-                <p>
-                    design, ux, creation, creativity, exploration, development, empathy, community and love. i strive to
-                    give
-                    everything, and aim to leave things better than how i found them. reading is a passion, and a vital
-                    resource
-                    for wisdom. always looking to experience something new, and always aiming to be a better person.
-                </p>
-
-                <blockquote cite="beth kempton">
-                    <i>"rich is the person who is content with what they have"</i> - beth kempton
-                </blockquote>
-            </section>
-
-            <section>
-                <header>
-                    <h2>
-                        decided to make a web component button...(it aint finished yet)
-                    </h2>
-                </header>
-
-                <gk-wc-button
-                    style="margin: 0 8px;"
-                    id="gkButton"
-                ></gk-wc-button>
-                <script src="./node_modules/gk-wc-button/index.js"></script>
-                <script>
-                    loadComponent('./node_modules/gk-wc-button/button.wc')
-                </script>
-
-                <script>
-                    const EL = document.getElementById('gkButton')
-                    EL.addEventListener('click', function () {
-                        EL.setAttribute('loading', true)
-
-                        setTimeout(() => {
-                            EL.setAttribute('loading', false)
-                        }, 1000)
-                    })
-                </script>
-
-                <p>
-                    "npm i gk-wc-button" to try it yourself
-                </p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>thoughts</h2>
-                </header>
-
-                <p>
-                    i am not exactly sure what the intention is behind this website. is it somewhere to showcase small
-                    bits of code,
-                    various parts of my life and personality? as someone who is
-                    constantly changing my current interests and seeking new things, it can be hard to keep track of
-                    what i am
-                    practicing. i am trying to keep a balance between life and work, but they often overlap to the
-                    detriment of myself.
-                    i fear that if i do not keep up to date with the latest and greatest gadgets, then i somehow fall
-                    behind,
-                    but conversely, if you read too much, you never actually get to do anything purposeful.
-                </p>
-
-                <blockquote cite="Edmund Burke">
-                    <i>"he who wrestles with us, strengthens our nerves, and sharpens our skill. our antagonist is our
-                        helper."</i>
-                    - edmund burke
-                </blockquote>
-
-                <p>
-                    i have often tried to think about what would make me happy. overtime, my ideas have conflicted,
-                    changed and
-                    morphed into different things. know thyself is a phrase that i value. if you don't know or
-                    understand what you want
-                    in life, how can you be happy? i often muse over what we all think is and is not
-                    important. we all strive for the latest and greatest, but it is only when something difficult
-                    happens in life
-                    that we realise that all we previously desired was meaningless. should life be about developing my
-                    own personal
-                    self and others even if that means earning less money and being less "successful"?
-                </p>
-
-                <blockquote cite="">
-                    <i>"don't waste energy worrying about what you don't have. that is the route to misery. instead, pay
-                        attention to
-                        the good already in your life, and do your best at whatever you are doing. there is joy in the
-                        satisfaction of
-                        that."</i> - beth kempton
-                </blockquote>
-
-                <p>
-                    i don't like to be tied down to one thing, one route. to be self-reliant, and have freedom of
-                    movement is something
-                    that i want. but how to achieve such a thing? i don't even know what freedom of movement would
-                    entail. i am not even
-                    sure that i would want to travel too far from my family for prolonged periods of time. i sometimes
-                    feel torn
-                    between the desire to travel, and the actual physical action of travelling. sometimes the thought is
-                    easier and more
-                    enjoyable than the action.
-                </p>
-
-                <blockquote cite="Mihaly Csikszentmihalyi">
-                    <i>"how we feel about ourselves, the joy we get from living, ultimately depends on how the mind
-                        filters and interprets
-                        everyday experience."</i> - mihaly csikszentmihalyi
-                </blockquote>
-
-                <p>
-                    i like to make things. to develop things. does this mean that i should aim for a life of personal
-                    diy. small hobby
-                    items at the weekend, or something greater? turn it into a career. but would that then restrict my
-                    freedom of movement?
-                    owning a business takes time, effort, stress and risk. i aim to avoid stress but i am not sure that
-                    can be attained as a
-                    web developer. as someone who has developed a large dose of imposter syndrome, i frequently feel
-                    inadequate when
-                    compared against others. but none of this matters when viewed from afar, so why should i care?
-                </p>
-
-                <blockquote cite="Mihaly Csikszentmihalyi">
-                    <i>"only direct control of experience, the ability to derive moment-by-moment enjoyment from
-                        everything we do, can
-                        overcome the obstacles to fulfillment."</i> - mihaly csikszentmihalyi
-                </blockquote>
-
-                <p>
-                    as someone who who frequently reads, i am always gaining insight to how other people think, act and
-                    what
-                    they think is the right and correct thing to do. some of these ideas have previously conflicted with
-                    each other and
-                    has caused my mind to be caught down the middle. as someone who seeks guidance from others, this has
-                    been a
-                    confusion within my mind. as i grow older, my ideas are becoming more concrete and i feel able to
-                    discern between
-                    what i believe in, and what i don't. i continue to read, and i hope you do as well.
-                </p>
-
-                <blockquote cite="beth kempton">
-                    <i>"we give away freely that most precious of resources - our attention - and in doing so, we cheat
-                        ourselves out
-                        of the gifts that are already here."</i> - beth kempton
-                </blockquote>
-
-                <blockquote cite="beth kempton">
-                    <i>"there is great beauty, value and comfort to be found in simplicity."</i> - beth kempton
-                </blockquote>
-            </section>
-
-            <section>
-                <header>
-                    <h2>books</h2>
-                </header>
-
-                <section>
+            <section class="section_center">
+                <div>
                     <header>
-                        <h3>non-fiction</h3>
+                        <h2>what i love</h2>
+                    </header>
+                    <p>
+                        design, ux, creation, creativity, exploration, development, empathy, community and love. i
+                        strive to give everything, and aim to leave things better than how i found them. reading is a
+                        passion, and a vital resource for wisdom. always looking to experience something new, and always
+                        aiming to be a better person.
+                    </p>
+
+                    <blockquote cite="beth kempton">
+                        <i>"rich is the person who is content with what they have"</i> - beth kempton
+                    </blockquote>
+                </div>
+            </section>
+
+            <section class="section_center">
+                <div>
+                    <header>
+                        <h2>
+                            decided to make a web component button...(it aint finished yet)
+                        </h2>
+                    </header>
+
+                    <gk-wc-button
+                        style="margin: 0 8px;"
+                        id="gkButton"
+                    ></gk-wc-button>
+                    <script src="./node_modules/gk-wc-button/index.js"></script>
+                    <script>
+                        loadComponent('./node_modules/gk-wc-button/button.wc')
+                    </script>
+
+                    <script>
+                        const EL = document.getElementById('gkButton')
+                        EL.addEventListener('click', function () {
+                            EL.setAttribute('loading', true)
+
+                            setTimeout(() => {
+                                EL.setAttribute('loading', false)
+                            }, 1000)
+                        })
+                    </script>
+
+                    <p>
+                        "npm i gk-wc-button" to try it yourself
+                    </p>
+                </div>
+            </section>
+
+            <section class="section_center">
+                <div>
+                    <header>
+                        <h2>thoughts</h2>
+                    </header>
+
+                    <p>
+                        i am not exactly sure what the intention is behind this website. is it somewhere to showcase
+                        small bits of code, various parts of my life and personality? as someone who is constantly
+                        changing my current interests and seeking new things, it can be hard to keep track of
+                        what i am practicing. i am trying to keep a balance between life and work, but they often
+                        overlap to the detriment of myself. i fear that if i do not keep up to date with the latest and
+                        greatest gadgets, then i somehow fall behind, but conversely, if you read too much, you never
+                        actually get to do anything purposeful.
+                    </p>
+
+                    <blockquote cite="Edmund Burke">
+                        <i>"he who wrestles with us, strengthens our nerves, and sharpens our skill. our antagonist
+                            is our helper."</i>
+                        - edmund burke
+                    </blockquote>
+
+                    <p>
+                        i have often tried to think about what would make me happy. overtime, my ideas have
+                        conflicted, changed and morphed into different things. know thyself is a phrase that i value. if
+                        you don't know or understand what you want in life, how can you be happy? i often muse over what
+                        we all think is and is not important. we all strive for the latest and greatest, but it is only
+                        when something difficult happens in life that we realise that all we previously desired was
+                        meaningless. should life be about developing my own personal self and others even if that means
+                        earning less money and being less "successful"?
+                    </p>
+
+                    <blockquote cite="">
+                        <i>"don't waste energy worrying about what you don't have. that is the route to misery.
+                            instead, pay attention to the good already in your life, and do your best at whatever you
+                            are doing. there is joy in the satisfaction of that."</i> - beth kempton
+                    </blockquote>
+
+                    <p>
+                        i don't like to be tied down to one thing, one route. to be self-reliant, and have freedom
+                        of movement is something that i want. but how to achieve such a thing? i don't even know what
+                        freedom of movement would entail. i am not even sure that i would want to travel too far from my
+                        family for prolonged periods of time. i sometimes feel torn between the desire to travel, and
+                        the actual physical action of travelling. sometimes the thought is easier and more enjoyable
+                        than the action.
+                    </p>
+
+                    <blockquote cite="Mihaly Csikszentmihalyi">
+                        <i>"how we feel about ourselves, the joy we get from living, ultimately depends on how the
+                            mind filters and interprets everyday experience."</i> - mihaly csikszentmihalyi
+                    </blockquote>
+
+                    <p>
+                        i like to make things. to develop things. does this mean that i should aim for a life of
+                        personal diy. small hobby items at the weekend, or something greater? turn it into a career. but
+                        would that then restrict my freedom of movement? owning a business takes time, effort, stress
+                        and risk. i aim to avoid stress but i am not sure that can be attained as a web developer. as
+                        someone who has developed a large dose of imposter syndrome, i frequently feel inadequate when
+                        compared against others. but none of this matters when viewed from afar, so why should i care?
+                    </p>
+
+                    <blockquote cite="Mihaly Csikszentmihalyi">
+                        <i>"only direct control of experience, the ability to derive moment-by-moment enjoyment from
+                            everything we do, can overcome the obstacles to fulfillment."</i> - mihaly csikszentmihalyi
+                    </blockquote>
+
+                    <p>
+                        as someone who who frequently reads, i am always gaining insight to how other people think,
+                        act and what they think is the right and correct thing to do. some of these ideas have
+                        previously conflicted with each other and has caused my mind to be caught down the middle. as
+                        someone who seeks guidance from others, this has been a confusion within my mind. as i grow
+                        older, my ideas are becoming more concrete and i feel able to discern between what i believe in,
+                        and what i don't. i continue to read, and i hope you do as well.
+                    </p>
+
+                    <blockquote cite="beth kempton">
+                        <i>"we give away freely that most precious of resources - our attention - and in doing so,
+                            we cheat ourselves out of the gifts that are already here."</i> - beth kempton
+                    </blockquote>
+
+                    <blockquote cite="beth kempton">
+                        <i>"there is great beauty, value and comfort to be found in simplicity."</i> - beth kempton
+                    </blockquote>
+                </div>
+            </section>
+
+            <section class="section_center">
+                <div>
+                    <header>
+                        <h2>books</h2>
+                    </header>
+
+                    <section>
+                        <header>
+                            <h3>non-fiction</h3>
+                        </header>
+
+                        <ul>
+                            <li>why we sleep: the new science of sleep and dreams by matthew walker</li>
+                            <li>flow: the classic work on how to achieve happiness by mihaly csikszentmihalyi</li>
+                            <li>wabi sabi: japanese wisdom for a perfectly imperfect life by beth kempton</li>
+                            <li>12 rules of life by jordan b. peterson</li>
+                            <li>ikigai: the japanese secret to a long and happy life by héctor garcía and francesc
+                                miralles
+                            </li>
+                            <li>the essential gandhi: an anthology of his writings on his life, work, and ideas by
+                                mahatma
+                                gandhi and louis fischer</li>
+                            <li>zen & the art of motorcycle maintenance by robert m. pirsig</li>
+                            <li>lila by robert m. pirsig</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <header>
+                            <h3>fiction</h3>
+                        </header>
+
+                        <ul>
+                            <li>liveship traders trilogy by robin hobb</li>
+                            <li>the riftwar saga by raymond e. feist</li>
+                            <li>the farseer trilogy by robin hobb</li>
+                        </ul>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section_center">
+                <div>
+                    <header>
+                        <h2>words</h2>
+                    </header>
+                    <p>
+                        zen, buddhism, taioism, yoga, meditation, tea, ying and yang, baking, pizza, japan,
+                        mindfulness, consciousness, independence, truth, simplicity, family, education, self-control,
+                        books, philosophy, health, sound, energy, chaos and order, expression, light, life, patterns,
+                        flow.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section_center">
+                <div>
+                    <header>
+                        <h2>technical skills</h2>
+                    </header>
+                    <p>worked as a software tester for three years before taking a sideways step into the world of
+                        web development.
+                    </p>
+
+                    <p>as a full-stack developer, i have worked with vue.js and quasar to build both a simple spa,
+                        and complex translation dashboard. developed both rest and graphql api's to retrieve and post
+                        data to a sql database. worked with the django framework which required upskilling in python,
+                        and also required me to better understand crsf, and user authentication.</p>
+
+                    <p>as a software tester, i developed and executed test scripts for web and mobile applications.
+                        designed and maintained test metrics for stakeholders. maintained a test automation suite.
+                        developed proficient knowledge of xquery to execute complex queries within a nosql marklogic
+                        database to both inject and locate data. implemented complex bash scripts to be more efficient
+                        in testing.</p>
+                </div>
+            </section>
+
+            <section class="section_center">
+                <div>
+                    <header>
+                        <h2>blog roll</h2>
                     </header>
 
                     <ul>
-                        <li>why we sleep: the new science of sleep and dreams by matthew walker</li>
-                        <li>flow: the classic work on how to achieve happiness by mihaly csikszentmihalyi</li>
-                        <li>wabi sabi: japanese wisdom for a perfectly imperfect life by beth kempton</li>
-                        <li>12 rules of life by jordan b. peterson</li>
-                        <li>ikigai: the japanese secret to a long and happy life by héctor garcía and francesc miralles
-                        </li>
-                        <li>the essential gandhi: an anthology of his writings on his life, work, and ideas by mahatma
-                            gandhi and louis fischer</li>
-                        <li>zen & the art of motorcycle maintenance by robert m. pirsig</li>
-                        <li>lila by robert m. pirsig</li>
+                        <li><a href="./blog/post/bash-i18n.html">manipulating a json file with bash</a></li>
+                        <li><a href="./blog/post/loading-icon-button-tutorial.html">creating a refresh button with
+                                javascript and css
+                                animation</a></li>
+                        <li><a href="./blog/post/google-fonts.html">how to use google fonts</a></li>
                     </ul>
-                </section>
-
-                <section>
-                    <header>
-                        <h3>fiction</h3>
-                    </header>
-
-                    <ul>
-                        <li>liveship traders trilogy by robin hobb</li>
-                        <li>the riftwar saga by raymond e. feist</li>
-                        <li>the farseer trilogy by robin hobb</li>
-                    </ul>
-                </section>
-            </section>
-
-            <section>
-                <header>
-                    <h2>words</h2>
-                </header>
-                <p>
-                    zen, buddhism, taioism, yoga, meditation, tea, ying and yang, baking, pizza, japan, mindfulness,
-                    consciousness,
-                    independence, truth, simplicity, family, education, self-control, books, philosophy, health, sound,
-                    energy,
-                    chaos and order, expression, light, life, patterns, flow.
-                </p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>technical skills</h2>
-                </header>
-                <p>worked as a software tester for three years before taking a sideways step into the world of web
-                    development.
-                </p>
-
-                <p>as a full-stack developer, i have worked with vue.js and quasar to build both a simple spa, and
-                    complex
-                    translation dashboard. developed both rest and graphql api's to retrieve and post data to a sql
-                    database.
-                    worked
-                    with the django framework which required upskilling in python, and also required me to better
-                    understand crsf,
-                    and user authentication.</p>
-
-                <p>as a software tester, i developed and executed test scripts for web and mobile applications. designed
-                    and
-                    maintained test metrics for stakeholders. maintained a test automation suite. developed proficient
-                    knowledge
-                    of
-                    xquery to execute complex queries within a nosql marklogic database to both inject and locate data.
-                    implemented
-                    complex bash scripts to be more efficient in testing.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>blog roll</h2>
-                </header>
-
-                <ul>
-                    <li><a href="./blog/post/bash-i18n.html">manipulating a json file with bash</a></li>
-                    <li><a href="./blog/post/loading-icon-button-tutorial.html">creating a refresh button with
-                            javascript and css
-                            animation</a></li>
-                    <li><a href="./blog/post/google-fonts.html">how to use google fonts</a></li>
-                </ul>
             </section>
         </main>
 
