@@ -15,7 +15,7 @@ const FILES_TO_CACHE = [
     '/node_modules/gk-wc-button/button.wc',
 ]
 
-const CACHE_NAME = 'static-cache-v18'
+const CACHE_NAME = 'static-cache-v19'
 
 self.addEventListener('install', event => {
     event.waitUntil(
