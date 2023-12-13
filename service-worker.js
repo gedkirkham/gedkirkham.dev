@@ -1,5 +1,4 @@
 const FILES_TO_CACHE = [
-    '/index.html',
     '/style.css',
     '/files/Ged-Kirkhams-cv-full-stack-web-dev-v3.pdf',
     '/blog/img/google-font-relStylesheet.jpg',
